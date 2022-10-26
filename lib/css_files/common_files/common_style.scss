@@ -1,0 +1,211 @@
+// ----------------------- GENERAL FOR BODY ----------------------
+// 
+
+$color-dark: rgb(15, 15, 15);
+$color-light: rgb(190, 190, 190);
+$color-bright: rgb(0, 160, 230);
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgb(230, 230, 230);
+
+    // width: 100vw;
+    // height: 100vh;
+
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // align-content: center;
+
+    & .center {
+
+        $content-padding: calc(50% - 1200px/2);
+
+        padding-left: $content-padding;
+        padding-right: $content-padding;
+
+        padding-left: MAX($content-padding, 16px);
+        padding-right: MAX($content-padding, 16px);
+
+        overflow-x: auto;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+    overflow: hidden;
+
+    transition: all 0.5s;
+
+    //стили для scrollbar
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: grey transparent;
+
+        /* ширина scrollbar */
+        &::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+
+        /* цвет дорожки */
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: grey;
+            /* цвет плашки */
+            border-radius: 5px;
+            /* закругления плашки */
+            border: 1px solid transparent;
+            /* padding вокруг плашки */
+        }
+    }
+}
+
+
+
+button {
+    display: inline-block;
+
+    padding-left: 24px;
+    padding-right: 24px;
+
+    width: 16%;
+    height: 40px;
+    min-width: max-content;
+
+    border-radius: 20px;
+    border: 2px solid $color-dark;
+    background: $color-bright;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: $color-dark;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    &:active {
+        transform: scale(0.925);
+    }
+
+    &:hover {
+        background: $color-dark;
+        color: $color-light;
+    }
+
+    &:disabled {
+        background: $color-light;
+        color: gray;
+
+        border: 2px solid gray;
+
+        transform: none;
+        cursor: default;
+    }
+}
+
+input {
+    display: inline-block;
+
+    padding-left: 24px;
+    padding-right: 24px;
+
+    width: 300px;
+    height: 40px;
+
+    border-radius: 20px;
+    border: 2px solid $color-dark;
+    background: $color-light;
+    outline: none;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: $color-dark;
+
+    text-align: center;
+
+    &::placeholder {
+        color: rgb(140, 140, 140);
+    }
+
+    &:focus {
+        border: 2px solid $color-bright;
+    }
+}
+
+p {
+    height: max-content;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    // line-height: 32px;
+
+    color: $color-dark;
+
+    text-align: justify;
+}
+
+
+
+// ----------------------- FOR STYLE SCRIPT ----------------------
+// 
+div.loader {
+    position: absolute;
+
+    top: -110px;
+    left: -110px;
+
+    transition: none;
+
+    display: none;
+}
+
+div.tooltip {
+    position: absolute;
+
+    top: -110px;
+    left: -110px;
+
+    height: 32px;
+    min-width: max-content;
+
+    padding: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+
+    border-radius: 10px;
+    border: 0px solid $color-dark;
+    background-color: lightgrey;
+
+    transition: none;
+
+    display: none;
+
+    & p {
+        display: inline-block;
+        margin: 0;
+
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+
+        color: black;
+
+        // text-transform: uppercase;
+
+        text-align: justify;
+    }
+
+}

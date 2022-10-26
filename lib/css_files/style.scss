@@ -1,0 +1,74 @@
+// ----------------------- GENERAL FOR BODY ----------------------
+// 
+
+@import './common_files/common_style.scss';
+
+$bg-color: rgb(0, 73, 128);
+
+// -------------------------- FOR PAGE ----------------------
+// 
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: $bg-color;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+main {
+    height: 100vh;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 0px;
+}
+
+
+
+#app {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 0px;
+}
+
+.modalWindow {
+    &_display {
+        position: absolute;
+        top: -10vh;
+        left: -10vw;
+        width: 120vw;
+        height: 120vh;
+
+        background-color: $bg-color;
+        opacity: 0.9;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &_box {
+        width: 480px;
+        height: 459px;
+
+        background: #C2F5FF;
+        border-radius: 12px;
+    }
+}
+
+// -------------------------- MOBILE VERSION ----------------------
+// 
+@media (max-width: 768px) {}
