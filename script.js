@@ -1,6 +1,6 @@
 //------------------- ДВИЖОК ОТРИСОВКИ -------------------
 
-application = {
+application = { 
   // ОБЩЕЕ
   selectors: {
     container: document.body.querySelector("#app"), // основной блок приложения
