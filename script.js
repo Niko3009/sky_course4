@@ -15,7 +15,7 @@ application = {
       `\n`
     );
 
-    // Предварительная...
+    // Предварительная... 
     application.pre.render(); // отрисовка
     application.pre.loading(); // загрузка данных
     application.pre.setting(); // настройка приложения
