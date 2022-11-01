@@ -5,7 +5,7 @@ application = {
   selectors: {
     container: document.body.querySelector("#app"), // основной блок приложения
     tabtitle: document.head.querySelector("title"), // тег названия вкладки
-  },
+  }, 
   launch: function () {
     // Отметка в консоли
     console.log(`\n`, `ЗАПУСК ПРИЛОЖЕНИЯ\n`, `\n`);
