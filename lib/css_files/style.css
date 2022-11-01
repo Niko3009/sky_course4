@@ -227,6 +227,151 @@ main {
   gap: 0px;
 }
 
+.screen_display {
+  position: absolute;
+  top: 0vh;
+  left: 0vw;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+  opacity: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.screen_box {
+  width: 90%;
+  height: 90%;
+  background: transparent;
+  padding: 5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 28px;
+}
+
+.screen_box *.SB_message {
+  position: absolute;
+  top: 0vh;
+  left: 0vw;
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.screen_box *.SB_message .messageBox {
+  width: 480px;
+  height: 300px;
+  background: #004980;
+  border-radius: 6px;
+  border: 1px solid #FFFFFF;
+  padding: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow: hidden;
+}
+
+.screen_box *.SB_message p {
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 22px;
+  color: #FFFFFF;
+  text-align: justify;
+}
+
+.screen_box *.gameBox {
+  width: 1000px;
+  height: 600px;
+  border: 0px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px;
+  overflow: visible;
+}
+
+.screen_box *.gameBox .deckOfCardsBox {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (95px)[9];
+      grid-template-columns: repeat(9, 95px);
+  -ms-grid-rows: (132px)[4];
+      grid-template-rows: repeat(4, 132px);
+  gap: 15px;
+  overflow: visible;
+}
+
+.screen_box *.gameBox .cardBox {
+  cursor: pointer;
+}
+
+.screen_box *.gameBox .cardBox img.cardImg {
+  width: 100%;
+  height: 100%;
+}
+
+.screen_box *.gameBox .cardBox:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
 .window_display {
   position: absolute;
   top: 0vh;
@@ -283,6 +428,7 @@ main {
 }
 
 .window_box *.selectionBlock {
+  overflow: visible;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -306,6 +452,7 @@ main {
   height: 98px;
   background: #FFFFFF;
   border-radius: 12px;
+  border: 2px solid #FFFFFF;
   font-style: normal;
   font-weight: 400;
   font-size: 64px;
@@ -314,12 +461,23 @@ main {
   color: #0080C1;
 }
 
+.window_box *.selectionBlock button:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.window_box *.selectionBlock button:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+}
+
 .window_box *.selectionBlock button.selectedOption {
-  border: 4px solid #7AC100;
+  border: 2px solid #7AC100;
 }
 
 .window_box *.selectionBlock button.resultOption {
   background: #7AC100;
+  color: #FFFFFF;
 }
 
 .window_box *.selectionBlock button.errorOption {
