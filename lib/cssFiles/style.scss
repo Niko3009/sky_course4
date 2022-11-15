@@ -185,8 +185,8 @@ main {
       }
     }
 
-    &.screenBlocks {
-      &_message {
+    &.screenBlock {
+      &_popUpMessage {
         &_msgDisplay {
           position: absolute;
           top: 0vh;
@@ -298,67 +298,78 @@ main {
   }
 
   &Box * {
-    &.windowTitle {
-      max-width: 300px;
+    &.window {
+      &_difficultySelection {
+        &_selectionBlock {
+          overflow: visible;
 
-      font-style: normal;
-      font-weight: 800;
-      font-size: 40px;
-      line-height: 48px;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
 
-      text-align: center;
+          padding-top: 20px;
+          padding-bottom: 20px;
 
-      color: $color-text-1;
+          gap: 24px;
+
+          & button {
+            width: 98px;
+            height: 98px;
+
+            background: $color-block-2;
+            border-radius: 12px;
+            border: 2px solid $color-block-2;
+
+            font-style: normal;
+            font-weight: 400;
+            font-size: 64px;
+            line-height: 72px;
+            text-align: center;
+            color: $color-text-2;
+
+            &:hover {
+              transform: scale(1.1);
+            }
+
+            &:active {
+              transform: scale(0.95);
+            }
+
+            &.selectedOption {
+              border: 2px solid $color-all-1;
+            }
+
+            &.resultOption {
+              background: $color-all-1;
+              color: $color-block-2;
+            }
+
+            &.errorOption {
+              background: lightcoral;
+            }
+          }
+        }
+
+
+      }
     }
 
-    &.selectionBlock {
-      overflow: visible;
+    &.windowBlock {
+      &_windowTitle {
+        &_txt {
+          max-width: 300px;
 
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
+          font-style: normal;
+          font-weight: 800;
+          font-size: 40px;
+          line-height: 48px;
 
-      padding-top: 20px;
-      padding-bottom: 20px;
+          text-align: center;
 
-      gap: 24px;
-
-      & button {
-        width: 98px;
-        height: 98px;
-
-        background: $color-block-2;
-        border-radius: 12px;
-        border: 2px solid $color-block-2;
-
-        font-style: normal;
-        font-weight: 400;
-        font-size: 64px;
-        line-height: 72px;
-        text-align: center;
-        color: $color-text-2;
-
-        &:hover {
-          transform: scale(1.1);
+          color: $color-text-1;
         }
 
-        &:active {
-          transform: scale(0.95);
-        }
-
-        &.selectedOption {
-          border: 2px solid $color-all-1;
-        }
-
-        &.resultOption {
-          background: $color-all-1;
-          color: $color-block-2;
-        }
-
-        &.errorOption {
-          background: lightcoral;
-        }
       }
     }
   }
@@ -366,4 +377,4 @@ main {
 
 // -------------------------- MOBILE VERSION ----------------------
 //
-@media (max-width: 768px) {}
+// @media (max-width: 768px) {}

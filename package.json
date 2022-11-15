@@ -32,13 +32,16 @@
         "eslint-plugin-prettier": "^4.2.1",
         "husky": "^8.0.1",
         "prettier": "^2.7.1",
-        "stylelint": "^14.14.1",
-        "stylelint-config-prettier": "^9.0.3",
+        "prettier-eslint": "^15.0.1",
+        "prettier-stylelint": "^0.4.2",
+        "stylelint": "^14.15.0",
+        "stylelint-config-prettier": "^9.0.4",
         "stylelint-config-standard": "^29.0.0",
         "stylelint-prettier": "^2.0.0"
     },
     "dependencies": {
         "http-server": "^14.1.1",
-        "lodash": "^4.17.21"
+        "lodash": "^4.17.21",
+        "stylelint-scss": "^4.3.0"
     }
 }

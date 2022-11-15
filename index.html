@@ -14,21 +14,17 @@
             rel="stylesheet"
         />
         <link
-            href="./lib/style_files/fonts/stratosskyengweb-regular.woff"
+            href="./lib/styleFiles/fonts/stratosskyengweb-regular.woff"
             rel="stylesheet"
         />
 
-        <link rel="stylesheet" href="./lib/css_files/style.css" />
+        <link rel="stylesheet" href="./lib/cssFiles/style.css" />
     </head>
 
     <body>
         <main>
             <div id="app" class="app"></div>
         </main>
-
-        <div class="loader">
-            <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-        </div>
 
         <!-- SCRIPTS -->
         <!-------- url scripts -------->
@@ -38,9 +34,16 @@
         <script></script>
 
         <!-------- main scripts -------->
+
+        <script src="./lib/jsFiles/appEngine.js"></script>
+        <script src="./lib/jsFiles/appComponentsEngine.js"></script>
+
+        <script src="./lib/jsFiles/appComponents/appScreenBlocks.js"></script>
+        <script src="./lib/jsFiles/appComponents/appScreens/game.js"></script>
+
+        <script src="./lib/jsFiles/appComponents/appWindowBlocks.js"></script>
+        <script src="./lib/jsFiles/appComponents/appWindows/difficultySelection.js"></script>
+
         <script src="./script.js"></script>
-        <script src="./lib/js_files/app-components_screens.js"></script>
-        <script src="./lib/js_files/app-components_windows.js"></script>
-        <script src="./lib/js_files/app-logic.js"></script>
     </body>
 </html>

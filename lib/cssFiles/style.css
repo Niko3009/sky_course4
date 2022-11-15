@@ -374,7 +374,7 @@ main {
           transform: scale(1.1);
 }
 
-.screenBox *.screenBlocks_message_msgDisplay {
+.screenBox *.screenBlock_popUpMessage_msgDisplay {
   position: absolute;
   top: 0vh;
   left: 0vw;
@@ -395,7 +395,7 @@ main {
           align-items: center;
 }
 
-.screenBox *.screenBlocks_message_msgBox {
+.screenBox *.screenBlock_popUpMessage_msgBox {
   width: 480px;
   height: 300px;
   background: #004980;
@@ -418,7 +418,7 @@ main {
   overflow: hidden;
 }
 
-.screenBox *.screenBlocks_message p {
+.screenBox *.screenBlock_popUpMessage p {
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
@@ -429,7 +429,7 @@ main {
   text-align: justify;
 }
 
-.screenBox *.screenBlocks_gameTimer_Box {
+.screenBox *.screenBlock_gameTimer_Box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -439,7 +439,7 @@ main {
           flex-direction: row;
 }
 
-.screenBox *.screenBlocks_gameTimer_SubBox {
+.screenBox *.screenBlock_gameTimer_SubBox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -452,17 +452,17 @@ main {
           align-items: flex-end;
 }
 
-.screenBox *.screenBlocks_gameTimer_SubBox * {
+.screenBox *.screenBlock_gameTimer_SubBox * {
   font-style: normal;
   color: #ffffff;
 }
 
-.screenBox *.screenBlocks_gameTimer_SubBox p {
+.screenBox *.screenBlock_gameTimer_SubBox p {
   font-weight: 400;
   font-size: 16px;
 }
 
-.screenBox *.screenBlocks_gameTimer_SubBox h1 {
+.screenBox *.screenBlock_gameTimer_SubBox h1 {
   font-weight: 400;
   font-size: 64px;
 }
@@ -512,17 +512,7 @@ main {
   gap: 28px;
 }
 
-.windowBox *.windowTitle {
-  max-width: 300px;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 40px;
-  line-height: 48px;
-  text-align: center;
-  color: #004980;
-}
-
-.windowBox *.selectionBlock {
+.windowBox *.window_difficultySelection_selectionBlock {
   overflow: visible;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -542,7 +532,7 @@ main {
   gap: 24px;
 }
 
-.windowBox *.selectionBlock button {
+.windowBox *.window_difficultySelection_selectionBlock button {
   width: 98px;
   height: 98px;
   background: #ffffff;
@@ -556,26 +546,36 @@ main {
   color: #0080c1;
 }
 
-.windowBox *.selectionBlock button:hover {
+.windowBox *.window_difficultySelection_selectionBlock button:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }
 
-.windowBox *.selectionBlock button:active {
+.windowBox *.window_difficultySelection_selectionBlock button:active {
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
 }
 
-.windowBox *.selectionBlock button.selectedOption {
+.windowBox *.window_difficultySelection_selectionBlock button.selectedOption {
   border: 2px solid #7ac100;
 }
 
-.windowBox *.selectionBlock button.resultOption {
+.windowBox *.window_difficultySelection_selectionBlock button.resultOption {
   background: #7ac100;
   color: #ffffff;
 }
 
-.windowBox *.selectionBlock button.errorOption {
+.windowBox *.window_difficultySelection_selectionBlock button.errorOption {
   background: lightcoral;
+}
+
+.windowBox *.windowBlock_windowTitle_txt {
+  max-width: 300px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 48px;
+  text-align: center;
+  color: #004980;
 }
 /*# sourceMappingURL=style.css.map */
