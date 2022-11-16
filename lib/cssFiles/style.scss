@@ -1,0 +1,380 @@
+// ----------------------- GENERAL FOR BODY ----------------------
+//
+
+@import './common_files/common_style.scss';
+
+$color-bg: #004980;
+
+$color-block-1: #c2f5ff;
+$color-block-2: #ffffff;
+
+$color-text-1: $color-bg;
+$color-text-2: #0080c1;
+$color-text-3: $color-block-2;
+
+$color-all-1: #7ac100;
+
+// -------------------------- FOR PAGE ----------------------
+//
+body {
+  font-family: 'StratosSkyeng';
+
+  background-color: $color-bg;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+main {
+  height: 100vh;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  gap: 0px;
+}
+
+
+
+#app {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  gap: 0px;
+}
+
+.screen {
+  &Display {
+    position: absolute;
+    top: 0vh;
+    left: 0vw;
+    height: 100%;
+    width: 100%;
+
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+  }
+
+  &Box {
+    box-sizing: content-box;
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    gap: 20px;
+  }
+
+  &Box * {
+
+    &.screen {
+      &_game {
+
+        &_header {
+          width: 100%;
+          height: max-content;
+          min-width: 760px;
+
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+
+          padding-left: 100px;
+          padding-right: 100px;
+
+
+        }
+
+        &_gameField {
+          width: 100%;
+          height: 640px;
+
+          border: 0px solid black;
+
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          padding: 10px;
+
+          overflow: visible;
+
+          &_cardsCollectionBox {
+            &_1 {
+              display: grid;
+
+              grid-template-columns: repeat(3, 140px);
+              grid-template-rows: repeat(2, 200px);
+
+              gap: 15px;
+
+              overflow: visible;
+            }
+
+            &_2 {
+              display: grid;
+
+              grid-template-columns: repeat(4, 120px);
+              grid-template-rows: repeat(3, 165px);
+
+              gap: 15px;
+
+              overflow: visible;
+            }
+
+            &_3 {
+              display: grid;
+
+              grid-template-columns: repeat(6, 120px);
+              grid-template-rows: repeat(3, 165px);
+
+              gap: 15px;
+
+              overflow: visible;
+            }
+
+            &_4 {
+              display: grid;
+
+              grid-template-columns: repeat(9, 100px);
+              grid-template-rows: repeat(4, 140px);
+
+              gap: 15px;
+
+              overflow: visible;
+            }
+          }
+
+          &_cardBox {
+            cursor: pointer;
+
+            & img {
+              width: 100%;
+              height: 100%;
+            }
+
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+    }
+
+    &.screenBlock {
+      &_popUpMessage {
+        &_msgDisplay {
+          position: absolute;
+          top: 0vh;
+          left: 0vw;
+          width: 100vw;
+          height: 100vh;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+
+        &_msgBox {
+          width: 480px;
+          height: 300px;
+
+          background: $color-bg;
+          border-radius: 6px;
+          border: 1px solid $color-block-2;
+
+          padding: 40px;
+
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          overflow: hidden;
+        }
+
+        & p {
+          height: max-content;
+
+          font-style: normal;
+          font-weight: 300;
+          font-size: 22px;
+
+          color: $color-block-2;
+
+          text-align: justify;
+        }
+      }
+
+      &_gameTimer {
+
+        &_Box {
+          display: flex;
+          flex-direction: row;
+        }
+
+        &_SubBox {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+
+          & * {
+            font-style: normal;
+            color: $color-text-3;
+          }
+
+          & p {
+            font-weight: 400;
+            font-size: 16px;
+          }
+
+          & h1 {
+            font-weight: 400;
+            font-size: 64px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.window {
+  &Display {
+    position: absolute;
+    top: 0vh;
+    left: 0vw;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: $color-bg;
+    opacity: 0.9;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &Box {
+    width: 480px;
+    height: 459px;
+
+    background: $color-block-1;
+    border-radius: 12px;
+
+    padding: 40px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 28px;
+  }
+
+  &Box * {
+    &.window {
+      &_difficultySelection {
+        &_selectionBlock {
+          overflow: visible;
+
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+
+          padding-top: 20px;
+          padding-bottom: 20px;
+
+          gap: 24px;
+
+          & button {
+            width: 98px;
+            height: 98px;
+
+            background: $color-block-2;
+            border-radius: 12px;
+            border: 2px solid $color-block-2;
+
+            font-style: normal;
+            font-weight: 400;
+            font-size: 64px;
+            line-height: 72px;
+            text-align: center;
+            color: $color-text-2;
+
+            &:hover {
+              transform: scale(1.1);
+            }
+
+            &:active {
+              transform: scale(0.95);
+            }
+
+            &.selectedOption {
+              border: 2px solid $color-all-1;
+            }
+
+            &.resultOption {
+              background: $color-all-1;
+              color: $color-block-2;
+            }
+
+            &.errorOption {
+              background: lightcoral;
+            }
+          }
+        }
+
+
+      }
+    }
+
+    &.windowBlock {
+      &_windowTitle {
+        &_txt {
+          max-width: 300px;
+
+          font-style: normal;
+          font-weight: 800;
+          font-size: 40px;
+          line-height: 48px;
+
+          text-align: center;
+
+          color: $color-text-1;
+        }
+
+      }
+    }
+  }
+}
+
+// -------------------------- MOBILE VERSION ----------------------
+//
+// @media (max-width: 768px) {}

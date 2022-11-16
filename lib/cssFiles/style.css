@@ -4,10 +4,10 @@ body {
 }
 
 body .center {
-  padding-left: calc(50% - 1200px/2);
-  padding-right: calc(50% - 1200px/2);
-  padding-left: MAX(calc(50% - 1200px/2), 16px);
-  padding-right: MAX(calc(50% - 1200px/2), 16px);
+  padding-left: calc(50% - 1200px / 2);
+  padding-right: calc(50% - 1200px / 2);
+  padding-left: MAX(calc(50% - 1200px / 2), 16px);
+  padding-right: MAX(calc(50% - 1200px / 2), 16px);
   overflow-x: auto;
 }
 
@@ -58,12 +58,12 @@ button {
   min-width: max-content;
   border-radius: 12px;
   border: 0px solid #0f0f0f;
-  background: #7AC100;
+  background: #7ac100;
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
 }
 
@@ -74,11 +74,11 @@ button:active {
 
 button:hover {
   background: #0f0f0f;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 button:disabled {
-  background: #FFFFFF;
+  background: #ffffff;
   color: gray;
   border: 2px solid gray;
   -webkit-transform: none;
@@ -94,7 +94,7 @@ input {
   height: 40px;
   border-radius: 20px;
   border: 2px solid #0f0f0f;
-  background: #FFFFFF;
+  background: #ffffff;
   outline: none;
   font-style: normal;
   font-weight: 400;
@@ -227,14 +227,13 @@ main {
   gap: 0px;
 }
 
-.screen_display {
+.screenDisplay {
   position: absolute;
   top: 0vh;
   left: 0vw;
-  width: 100vw;
-  height: 100vh;
-  background-color: transparent;
-  opacity: 1;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -250,11 +249,11 @@ main {
           align-items: center;
 }
 
-.screen_box {
-  width: 90%;
-  height: 90%;
-  background: transparent;
-  padding: 5%;
+.screenBox {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  height: 100%;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -265,70 +264,40 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  gap: 28px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 20px;
 }
 
-.screen_box *.SB_message {
-  position: absolute;
-  top: 0vh;
-  left: 0vw;
-  width: 100vw;
-  height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.screen_box *.SB_message .messageBox {
-  width: 480px;
-  height: 300px;
-  background: #004980;
-  border-radius: 6px;
-  border: 1px solid #FFFFFF;
-  padding: 40px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  overflow: hidden;
-}
-
-.screen_box *.SB_message p {
+.screenBox *.screen_game_header {
+  width: 100%;
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 22px;
-  color: #FFFFFF;
-  text-align: justify;
+  min-width: 760px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 100px;
+  padding-right: 100px;
 }
 
-.screen_box *.gameBox {
-  width: 1000px;
-  height: 600px;
+.screenBox *.screen_game_gameField {
+  width: 100%;
+  height: 640px;
   border: 0px solid black;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -347,32 +316,158 @@ main {
   overflow: visible;
 }
 
-.screen_box *.gameBox .deckOfCardsBox {
+.screenBox *.screen_game_gameField_cardsCollectionBox_1 {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (95px)[9];
-      grid-template-columns: repeat(9, 95px);
-  -ms-grid-rows: (132px)[4];
-      grid-template-rows: repeat(4, 132px);
+  -ms-grid-columns: (140px)[3];
+      grid-template-columns: repeat(3, 140px);
+  -ms-grid-rows: (200px)[2];
+      grid-template-rows: repeat(2, 200px);
   gap: 15px;
   overflow: visible;
 }
 
-.screen_box *.gameBox .cardBox {
+.screenBox *.screen_game_gameField_cardsCollectionBox_2 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (120px)[4];
+      grid-template-columns: repeat(4, 120px);
+  -ms-grid-rows: (165px)[3];
+      grid-template-rows: repeat(3, 165px);
+  gap: 15px;
+  overflow: visible;
+}
+
+.screenBox *.screen_game_gameField_cardsCollectionBox_3 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (120px)[6];
+      grid-template-columns: repeat(6, 120px);
+  -ms-grid-rows: (165px)[3];
+      grid-template-rows: repeat(3, 165px);
+  gap: 15px;
+  overflow: visible;
+}
+
+.screenBox *.screen_game_gameField_cardsCollectionBox_4 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (100px)[9];
+      grid-template-columns: repeat(9, 100px);
+  -ms-grid-rows: (140px)[4];
+      grid-template-rows: repeat(4, 140px);
+  gap: 15px;
+  overflow: visible;
+}
+
+.screenBox *.screen_game_gameField_cardBox {
   cursor: pointer;
 }
 
-.screen_box *.gameBox .cardBox img.cardImg {
+.screenBox *.screen_game_gameField_cardBox img {
   width: 100%;
   height: 100%;
 }
 
-.screen_box *.gameBox .cardBox:hover {
+.screenBox *.screen_game_gameField_cardBox:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }
 
-.window_display {
+.screenBox *.screenBlock_popUpMessage_msgDisplay {
+  position: absolute;
+  top: 0vh;
+  left: 0vw;
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.screenBox *.screenBlock_popUpMessage_msgBox {
+  width: 480px;
+  height: 300px;
+  background: #004980;
+  border-radius: 6px;
+  border: 1px solid #ffffff;
+  padding: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow: hidden;
+}
+
+.screenBox *.screenBlock_popUpMessage p {
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 22px;
+  color: #ffffff;
+  text-align: justify;
+}
+
+.screenBox *.screenBlock_gameTimer_Box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.screenBox *.screenBlock_gameTimer_SubBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.screenBox *.screenBlock_gameTimer_SubBox * {
+  font-style: normal;
+  color: #ffffff;
+}
+
+.screenBox *.screenBlock_gameTimer_SubBox p {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.screenBox *.screenBlock_gameTimer_SubBox h1 {
+  font-weight: 400;
+  font-size: 64px;
+}
+
+.windowDisplay {
   position: absolute;
   top: 0vh;
   left: 0vw;
@@ -395,10 +490,10 @@ main {
           align-items: center;
 }
 
-.window_box {
+.windowBox {
   width: 480px;
   height: 459px;
-  background: #C2F5FF;
+  background: #c2f5ff;
   border-radius: 12px;
   padding: 40px;
   display: -webkit-box;
@@ -417,17 +512,7 @@ main {
   gap: 28px;
 }
 
-.window_box *.windowTitle {
-  max-width: 300px;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 40px;
-  line-height: 48px;
-  text-align: center;
-  color: #004980;
-}
-
-.window_box *.selectionBlock {
+.windowBox *.window_difficultySelection_selectionBlock {
   overflow: visible;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -447,40 +532,50 @@ main {
   gap: 24px;
 }
 
-.window_box *.selectionBlock button {
+.windowBox *.window_difficultySelection_selectionBlock button {
   width: 98px;
   height: 98px;
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 12px;
-  border: 2px solid #FFFFFF;
+  border: 2px solid #ffffff;
   font-style: normal;
   font-weight: 400;
   font-size: 64px;
   line-height: 72px;
   text-align: center;
-  color: #0080C1;
+  color: #0080c1;
 }
 
-.window_box *.selectionBlock button:hover {
+.windowBox *.window_difficultySelection_selectionBlock button:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }
 
-.window_box *.selectionBlock button:active {
+.windowBox *.window_difficultySelection_selectionBlock button:active {
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
 }
 
-.window_box *.selectionBlock button.selectedOption {
-  border: 2px solid #7AC100;
+.windowBox *.window_difficultySelection_selectionBlock button.selectedOption {
+  border: 2px solid #7ac100;
 }
 
-.window_box *.selectionBlock button.resultOption {
-  background: #7AC100;
-  color: #FFFFFF;
+.windowBox *.window_difficultySelection_selectionBlock button.resultOption {
+  background: #7ac100;
+  color: #ffffff;
 }
 
-.window_box *.selectionBlock button.errorOption {
+.windowBox *.window_difficultySelection_selectionBlock button.errorOption {
   background: lightcoral;
+}
+
+.windowBox *.windowBlock_windowTitle_txt {
+  max-width: 300px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 48px;
+  text-align: center;
+  color: #004980;
 }
 /*# sourceMappingURL=style.css.map */
