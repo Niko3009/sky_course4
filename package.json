@@ -11,7 +11,7 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "format": "prettier --write ./lib/",
         "lint:js": "eslint ./lib/**/*.js",
-        "lint:css": "stylelint ./lib/**/*.css  && stylelint ./lib/**/*.scss",
+        "lint:css": "stylelint ./lib/**/*.scss",
         "prepare": "husky install",
         "lint": "npm run lint:js && npm run lint:css"
     },
@@ -36,7 +36,9 @@
         "prettier-stylelint": "^0.4.2",
         "stylelint": "^14.15.0",
         "stylelint-config-prettier": "^9.0.4",
+        "stylelint-config-prettier-scss": "^0.0.1",
         "stylelint-config-standard": "^29.0.0",
+        "stylelint-config-standard-scss": "^6.1.0",
         "stylelint-prettier": "^2.0.0"
     },
     "dependencies": {

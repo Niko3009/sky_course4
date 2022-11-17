@@ -1,0 +1,58 @@
+//  animation flip-in-ver-left
+
+.flip-in-ver-left {
+    -webkit-animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: flip-in-ver-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes flip-in-ver-left {
+    0% {
+        -webkit-transform: rotateY(0);
+        transform: rotateY(0);
+        opacity: 1;
+    }
+
+    45% {
+        -webkit-transform: rotateY(90deg);
+        transform: rotateY(90deg);
+        opacity: 1;
+    }
+
+    55% {
+        -webkit-transform: rotateY(90deg);
+        transform: rotateY(90deg);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: rotateY(0);
+        transform: rotateY(0);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes flip-in-ver-left {
+    0% {
+        -webkit-transform: rotateY(0);
+        transform: rotateY(0);
+        opacity: 1;
+    }
+
+    45% {
+        -webkit-transform: rotateY(90deg);
+        transform: rotateY(90deg);
+        opacity: 1;
+    }
+
+    55% {
+        -webkit-transform: rotateY(90deg);
+        transform: rotateY(90deg);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: rotateY(0);
+        transform: rotateY(0);
+        opacity: 1;
+    }
+}

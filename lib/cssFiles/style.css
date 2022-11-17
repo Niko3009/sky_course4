@@ -173,6 +173,57 @@ div.tooltip p {
   text-align: justify;
 }
 
+.flip-in-ver-left {
+  -webkit-animation: flip-in-ver-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: flip-in-ver-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes flip-in-ver-left {
+  0% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+    opacity: 1;
+  }
+  45% {
+    -webkit-transform: rotateY(90deg);
+    transform: rotateY(90deg);
+    opacity: 1;
+  }
+  55% {
+    -webkit-transform: rotateY(90deg);
+    transform: rotateY(90deg);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes flip-in-ver-left {
+  0% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+    opacity: 1;
+  }
+  45% {
+    -webkit-transform: rotateY(90deg);
+    transform: rotateY(90deg);
+    opacity: 1;
+  }
+  55% {
+    -webkit-transform: rotateY(90deg);
+    transform: rotateY(90deg);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+    opacity: 1;
+  }
+}
+
 body {
   font-family: 'StratosSkyeng';
   background-color: #004980;
@@ -247,6 +298,13 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.screenCoverLayer {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  display: none;
 }
 
 .screenBox {
@@ -467,7 +525,7 @@ main {
   font-size: 64px;
 }
 
-.windowDisplay {
+.modalDisplay {
   position: absolute;
   top: 0vh;
   left: 0vw;
@@ -490,7 +548,14 @@ main {
           align-items: center;
 }
 
-.windowBox {
+.modalCoverLayer {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  display: none;
+}
+
+.modalBox {
   width: 480px;
   height: 459px;
   background: #c2f5ff;
@@ -512,7 +577,7 @@ main {
   gap: 28px;
 }
 
-.windowBox *.window_difficultySelection_selectionBlock {
+.modalBox *.modal_difficultySelection_selectionBlock {
   overflow: visible;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -532,7 +597,7 @@ main {
   gap: 24px;
 }
 
-.windowBox *.window_difficultySelection_selectionBlock button {
+.modalBox *.modal_difficultySelection_selectionBlock button {
   width: 98px;
   height: 98px;
   background: #ffffff;
@@ -546,30 +611,30 @@ main {
   color: #0080c1;
 }
 
-.windowBox *.window_difficultySelection_selectionBlock button:hover {
+.modalBox *.modal_difficultySelection_selectionBlock button:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }
 
-.windowBox *.window_difficultySelection_selectionBlock button:active {
+.modalBox *.modal_difficultySelection_selectionBlock button:active {
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
 }
 
-.windowBox *.window_difficultySelection_selectionBlock button.selectedOption {
+.modalBox *.modal_difficultySelection_selectionBlock button.selectedOption {
   border: 2px solid #7ac100;
 }
 
-.windowBox *.window_difficultySelection_selectionBlock button.resultOption {
+.modalBox *.modal_difficultySelection_selectionBlock button.resultOption {
   background: #7ac100;
   color: #ffffff;
 }
 
-.windowBox *.window_difficultySelection_selectionBlock button.errorOption {
+.modalBox *.modal_difficultySelection_selectionBlock button.errorOption {
   background: lightcoral;
 }
 
-.windowBox *.windowBlock_windowTitle_txt {
+.modalBox *.modalBlock_modalTitle_txt {
   max-width: 300px;
   font-style: normal;
   font-weight: 800;
