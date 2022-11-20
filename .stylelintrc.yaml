@@ -1,8 +1,15 @@
-{ extends: [
-            # 'stylelint-config-standard',
+{
+    extends:
+        [
+            'stylelint-config-standard',
             'stylelint-config-prettier',
             'stylelint-prettier/recommended',
             'stylelint-config-standard-scss',
             'stylelint-config-prettier-scss',
-            # 'stylelint-scss',
-        ], rules: { 'prettier/prettier': ['error', { 'endOfLine': 'auto' }] } }
+        ],
+    rules:
+        {
+            'prettier/prettier': ['error', { 'endOfLine': 'auto' }],
+            'at-rule-empty-line-before': true,
+        },
+}
