@@ -11,5 +11,6 @@
         {
             'prettier/prettier': ['error', { 'endOfLine': 'auto' }],
             'at-rule-empty-line-before': true,
+            'no-trailing-whitespace': false,
         },
 }
