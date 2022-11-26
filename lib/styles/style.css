@@ -278,7 +278,7 @@ main {
   gap: 0px;
 }
 
-.screenDisplay {
+.screen {
   position: absolute;
   top: 0vh;
   left: 0vw;
@@ -300,7 +300,11 @@ main {
           align-items: center;
 }
 
-.screenCoverLayer {
+.screenBG {
+  opacity: 0;
+}
+
+.screenCover {
   position: absolute;
   height: 100vh;
   width: 100vw;
@@ -525,14 +529,12 @@ main {
   font-size: 64px;
 }
 
-.modalDisplay {
+.modal {
   position: absolute;
   top: 0vh;
   left: 0vw;
   width: 100vw;
   height: 100vh;
-  background-color: #004980;
-  opacity: 0.9;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -548,7 +550,18 @@ main {
           align-items: center;
 }
 
-.modalCoverLayer {
+.modalBG {
+  position: absolute;
+  top: 0vh;
+  left: 0vw;
+  width: 100vw;
+  height: 100vh;
+  background-color: #004980;
+  opacity: 0.9;
+  z-index: 1;
+}
+
+.modalCover {
   position: absolute;
   height: 100vh;
   width: 100vw;
@@ -575,6 +588,7 @@ main {
       -ms-flex-pack: start;
           justify-content: flex-start;
   gap: 28px;
+  z-index: 2;
 }
 
 .modalBox *.modal_difficultySelection_selectionBlock {
@@ -634,13 +648,80 @@ main {
   background: lightcoral;
 }
 
+.modalBox *.modal_gameResult_resultImg {
+  height: 96px;
+}
+
+.modalBox *.modal_gameResult_timeBlock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.modalBox *.modal_gameResult_timeBlock > p {
+  min-height: 32px;
+  font-style: normal;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 32px;
+}
+
 .modalBox *.modalBlock_modalTitle_txt {
   max-width: 300px;
+  min-height: 48px;
   font-style: normal;
-  font-weight: 800;
   font-size: 40px;
+  font-weight: 800;
   line-height: 48px;
   text-align: center;
   color: #004980;
+}
+
+.modalBox *.modalBlock_gameTimer_Box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.modalBox *.modalBlock_gameTimer_SubBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.modalBox *.modalBlock_gameTimer_SubBox * {
+  font-style: normal;
+  color: #000000;
+}
+
+.modalBox *.modalBlock_gameTimer_SubBox p {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.modalBox *.modalBlock_gameTimer_SubBox h1 {
+  font-weight: 400;
+  font-size: 64px;
 }
 /*# sourceMappingURL=style.css.map */

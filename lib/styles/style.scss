@@ -14,6 +14,7 @@ $color-block-2: #ffffff;
 $color-text-1: $color-bg;
 $color-text-2: #0080c1;
 $color-text-3: $color-block-2;
+$color-text-4: #000000;
 
 $color-all-1: #7ac100;
 
@@ -57,7 +58,7 @@ main {
 }
 
 .screen {
-  &Display {
+  & {
     position: absolute;
     top: 0vh;
     left: 0vw;
@@ -70,11 +71,13 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-
   }
 
-  &CoverLayer {
+  &BG {
+    opacity: 0;
+  }
+
+  &Cover {
     position: absolute;
     height: 100vh;
     width: 100vw;
@@ -276,8 +279,23 @@ main {
 }
 
 .modal {
-  &Display {
+  & {
     position: absolute;
+    top: 0vh;
+    left: 0vw;
+    width: 100vw;
+    height: 100vh;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &BG {
+    position: absolute;
+
     top: 0vh;
     left: 0vw;
     width: 100vw;
@@ -286,13 +304,10 @@ main {
     background-color: $color-bg;
     opacity: 0.9;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    z-index: 1;
   }
 
-  &CoverLayer {
+  &Cover {
     position: absolute;
     height: 100vh;
     width: 100vw;
@@ -315,6 +330,8 @@ main {
     justify-content: flex-start;
 
     gap: 28px;
+
+    z-index: 2;
   }
 
   &Box * {
@@ -373,23 +390,74 @@ main {
 
 
       }
+
+      &_gameResult {
+        &_resultImg {
+          height: 96px;
+        }
+
+        &_timeBlock {
+
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          justify-content: center;
+
+          &>p {
+            min-height: 32px;
+
+            font-style: normal;
+            font-size: 24px;
+            font-weight: 800;
+            line-height: 32px;
+          }
+        }
+      }
     }
 
     &.modalBlock {
-      &_modalTitle {
-        &_txt {
-          max-width: 300px;
+      &_modalTitle_txt {
+        max-width: 300px;
+        min-height: 48px;
 
-          font-style: normal;
-          font-weight: 800;
-          font-size: 40px;
-          line-height: 48px;
+        font-style: normal;
+        font-size: 40px;
+        font-weight: 800;
+        line-height: 48px;
 
-          text-align: center;
+        text-align: center;
 
-          color: $color-text-1;
+        color: $color-text-1;
+      }
+
+
+      &_gameTimer {
+
+        &_Box {
+          display: flex;
+          flex-direction: row;
         }
 
+        &_SubBox {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+
+          & * {
+            font-style: normal;
+            color: $color-text-4;
+          }
+
+          & p {
+            font-weight: 400;
+            font-size: 16px;
+          }
+
+          & h1 {
+            font-weight: 400;
+            font-size: 64px;
+          }
+        }
       }
     }
   }
