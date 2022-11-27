@@ -1,6 +1,6 @@
 // --------------------- ЭКРАН ИГРЫ ---------------------
 
-import { cardImages } from './images.js'
+import { cardImages } from './images'
 
 export const game = function () {
     const appObj = window.app
@@ -27,7 +27,7 @@ export const game = function () {
 
     // ДАННЫЕ ЭКРАНА ------------------------------------------------------------
 
-    const difficultyPresets = {
+    const difficultyPresets: any = {
         1: 6, // легкий уровень - 6 карточек (3 пары)
         2: 12, // средний уровень - 12 карточек (6 пар)
         3: 18, // сложный уровень - 18 карточек (9 пар)
@@ -132,10 +132,10 @@ export const game = function () {
         gameTimerBlock.updateTime.byTimeData(minutes, seconds) // обновление блока таймера (на экране)
     }
 
-    const generateCards = function (cardBoxesList) {
+    const generateCards = function (cardBoxesList: any) {
         // Создание полной колоды (все 36 карт)
 
-        let availableCards = []
+        let availableCards: string[] = new Array()
 
         const suits = ['spades', 'diamonds', 'hearts', 'clubs']
         const ranks = [`6`, `7`, `8`, `9`, `10`, `J`, `Q`, `K`, `A`]
@@ -144,7 +144,7 @@ export const game = function () {
 
         // Случайная выборка из полной колоды
 
-        let selectedCards = new Array()
+        let selectedCards: string[] = new Array()
 
         const selectedCardsQty = Math.floor(cardBoxesList.length / 2)
         for (let cardNum = 1; cardNum <= selectedCardsQty; cardNum++) {
@@ -160,7 +160,7 @@ export const game = function () {
 
         // Набор генерируемых карт: удвоенная выборка из колоды
 
-        let generatedCards = [].concat(selectedCards, selectedCards)
+        let generatedCards: string[] = selectedCards.concat(selectedCards)
 
         // Случайное размещение карт по данному списку селекторов
 
@@ -214,7 +214,7 @@ export const game = function () {
         return cardsOnGameField
     }
 
-    const flipTheCard = function (card) {
+    const flipTheCard = function (card: any) {
         const cardBox = card.selector
         const cardImg = cardBox.querySelector('img')
         const isCardHidden = card.isCardHidden
@@ -249,7 +249,7 @@ export const game = function () {
         return true
     }
 
-    const openTheCard = function (card) {
+    const openTheCard = function (card: any) {
         if (!hasTheGameStarted || numberOfActiveCards > 1) return
 
         const isCardHidden = Boolean(card.isCardHidden)
@@ -279,7 +279,7 @@ export const game = function () {
         })
     }
 
-    const closeTheCard = function (card) {
+    const closeTheCard = function (card: any) {
         const isCardHidden = Boolean(card.isCardHidden)
         if (isCardHidden) return
 
@@ -287,7 +287,7 @@ export const game = function () {
         if (!isCardFlipSuccessful) return
     }
 
-    const twoCardsComparing = function (firstCard, secondCard) {
+    const twoCardsComparing = function (firstCard: any, secondCard: any) {
         const areCardsSame = firstCard.name === secondCard.name
 
         if (areCardsSame) {
@@ -325,11 +325,11 @@ export const game = function () {
 
     gameData.status = 'inGame'
 
-    let hasTheGameStarted = false
-    let lastActivatedCard = null
-    let numberOfActiveCards = 0
-    let gameTimeInSec = 0
-    let gameTimerID
+    let hasTheGameStarted: boolean = false
+    let lastActivatedCard: any = null
+    let numberOfActiveCards: number = 0
+    let gameTimeInSec: number = 0
+    let gameTimerID: number
 
     btnTurnCards.addEventListener('click', gameExit)
     restartBtn.addEventListener('click', gameReload)

@@ -1,14 +1,14 @@
 // ---------- ОБЪЕКТ ЭКРАНОВ ----------
 
-import { list as screensList } from './screensList.js'
-import { list as screenBlocksList } from './screenBlocksList.js'
-import { container as screenContainer } from './screenContainer.js'
+import { list as screensList } from './screensList'
+import { list as screenBlocksList } from './screenBlocksList'
+import { container as screenContainer } from './screenContainer'
 
 export const screens = {
     list: screensList,
 
     // Открытие экрана
-    open: function (newScreen) {
+    open: function (newScreen: string) {
         const appObj = window.app
         const appData = appObj.data
         const components = appObj.components
@@ -155,9 +155,9 @@ export const screens = {
         list: screenBlocksList,
 
         render: function (
-            blockName,
+            blockName: string,
             container = window.app.components.screens.template.box,
-            params = {}
+            params: any = new Object()
         ) {
             const blocks = window.app.components.screens.blocks
 

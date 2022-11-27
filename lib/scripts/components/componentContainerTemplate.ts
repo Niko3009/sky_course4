@@ -1,8 +1,13 @@
-import { appContainer } from '../appContainer.js'
+import { appContainer } from '../appContainer'
 
 const componentContainerTemplate = class {
+    display: any
+    bg: any
+    box: any
+    cover: any
+
     constructor(
-        componentType // тип компонента (например: 'screen')
+        componentType: string // тип компонента (например: 'screen')
     ) {
         const display = document.createElement('div')
         display.classList.add(`${componentType}`)

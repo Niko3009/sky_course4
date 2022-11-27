@@ -1,9 +1,9 @@
 import {
     appContainer,
     componentContainerTemplate,
-} from '../componentContainerTemplate.js'
+} from '../componentContainerTemplate'
 
-const componentType = 'modal'
+const componentType = 'screen'
 const createTheContainer = function () {
     const container = new componentContainerTemplate(componentType)
     return container

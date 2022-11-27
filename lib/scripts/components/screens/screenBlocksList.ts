@@ -1,10 +1,10 @@
 // ------------------- БЛОКИ ДЛЯ ЭКРАНОВ -------------------
 
-let list = {}
+let list: any = new Object()
 
 // Кнопка
 list['button'] = function (
-    container,
+    container: any,
     params = { buttonName: 'Кнопка', buttonClass: 'regular' }
 ) {
     const componentsObj = window.app.components
@@ -28,7 +28,10 @@ list['button'] = function (
 }
 
 // Блок сообщения
-list['popUpMessage'] = function (container, params = { message: `Сообщение` }) {
+list['popUpMessage'] = function (
+    container: any,
+    params = { message: `Сообщение` }
+) {
     const componentsObj = window.app.components
     const objectForBlockListFilling =
         componentsObj.dev.forListFilling.ofComponentBlocks
@@ -57,7 +60,7 @@ list['popUpMessage'] = function (container, params = { message: `Сообщен�
 }
 
 // Блок таймера
-list['gameTimer'] = function (container) {
+list['gameTimer'] = function (container: any) {
     const componentsObj = window.app.components
     const objectForBlockListFilling =
         componentsObj.dev.forListFilling.ofComponentBlocks
@@ -85,24 +88,27 @@ list['gameTimer'] = function (container) {
     pSec.textContent = 'sec'
     timerSecBox.appendChild(pSec)
 
-    const hMin = document.createElement('h1')
+    const hMin: any = document.createElement('h1')
     hMin.textContent = '00'
     timerMinBox.appendChild(hMin)
-    const hSec = document.createElement('h1')
+    const hSec: any = document.createElement('h1')
     hSec.textContent = '.00'
     timerSecBox.appendChild(hSec)
 
     // Функционал
 
-    let timerData = {}
+    let timerData: any = new Object()
     timerData.selectorOfMinutes = hMin
     timerData.selectorOfSeconds = hSec
-    timerData.updateTime = {}
-    timerData.updateTime.byTimeData = function (minutes, seconds) {
+    timerData.updateTime = new Object()
+    timerData.updateTime.byTimeData = function (
+        minutes: number,
+        seconds: number
+    ) {
         hMin.textContent = minutes < 10 ? '0' + minutes : minutes
         hSec.textContent = seconds < 10 ? '.0' + seconds : '.' + seconds
     }
-    timerData.updateTime.bySecondsData = function (seconds) {
+    timerData.updateTime.bySecondsData = function (seconds: number) {
         const minutes = Math.floor(seconds / 60)
         const remainingSeconds = seconds - minutes * 60
 

@@ -29,7 +29,7 @@ export const data = {
             minutes: 0,
             summary: `0m 0s`,
 
-            updateTheData(secondsAll) {
+            updateTheData(secondsAll: number) {
                 const timeObj = window.app.data.game.time
 
                 const minutes = Math.floor(secondsAll / 60)

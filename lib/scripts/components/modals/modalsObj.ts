@@ -1,14 +1,14 @@
 // ---------- ОБЪЕКТ МОДАЛЬНЫХ ОКОН (MODAL) ----------
 
-import { list as modalsList } from './modalsList.js'
-import { list as modalBlocksList } from './modalBlocksList.js'
-import { container as modalContainer } from './modalContainer.js'
+import { list as modalsList } from './modalsList'
+import { list as modalBlocksList } from './modalBlocksList'
+import { container as modalContainer } from './modalContainer'
 
 export const modals = {
     list: modalsList,
 
     // Открытие окна
-    open: function (newModal) {
+    open: function (newModal: string) {
         const appObj = window.app
         const appData = appObj.data
         const components = appObj.components
@@ -150,9 +150,9 @@ export const modals = {
         list: modalBlocksList,
 
         render: function (
-            blockName,
+            blockName: string,
             container = window.app.components.modals.template.box,
-            params = {}
+            params: any = new Object()
         ) {
             const blocks = window.app.components.modals.blocks
 

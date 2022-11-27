@@ -1,7 +1,7 @@
 // ---------- ОБЪЕКТ КОМПОНЕНТОВ ПРИЛОЖЕНИЯ ----------
 
-import { screens as screensObj } from './screens/screensObj.js'
-import { modals as modalsObj } from './modals/modalsObj.js'
+import { screens as screensObj } from './screens/screensObj'
+import { modals as modalsObj } from './modals/modalsObj'
 
 export const components = {
     // ЭКРАНЫ
@@ -13,7 +13,7 @@ export const components = {
     // СКРЫТИЕ И РАСКРЫТИЕ КОМПОНЕНТА
     blockVisibility: {
         // Скрытие
-        On: function (block, animationDuration) {
+        On: function (block: any, animationDuration: number) {
             const makeDelay = window.app.components.dev.makeDelay
             const delayBeforeHiding =
                 window.app.components.transitions.delayBeforeComponentHiding
@@ -40,7 +40,7 @@ export const components = {
         },
 
         // Раскрытие
-        Off: function (block, animationDuration) {
+        Off: function (block: any, animationDuration: number) {
             const makeDelay = window.app.components.dev.makeDelay
             const delayBeforeShowing =
                 window.app.components.transitions.delayBeforeComponentShowing
@@ -110,13 +110,21 @@ export const components = {
 
     // ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ДЛЯ РАЗРАБОТЧИКА
     dev: {
-        makeDelay: function (delayTime, funcAfterDelay) {
+        makeDelay: function (delayTime: number, funcAfterDelay: any) {
             setTimeout(funcAfterDelay, delayTime * 1000)
         },
         forListFilling: {
             ofComponents: class {
+                list: any
+                listUploadToAppObj: any
+                template: any
+                renderTheBlock: any
+                renderTheElement: any
+                cssPrefixOfComponent: any
+                cssPrefixMaking: any
+
                 constructor(
-                    componentType, // тип компонента (например: 'screen')
+                    componentType: string, // тип компонента (например: 'screen')
                     componentObjKey = `` // ключ компонента в window.app.components (лучше его задавать)
                 ) {
                     const componentsObj = window.app.components
@@ -129,14 +137,14 @@ export const components = {
                         window.app.components[componentObjKey].list = this.list
                     }
 
-                    this.template = {}
+                    this.template = new Object()
                     this.template.box =
                         componentsObj[componentObjKey].template.box // блок для контента компонента
                     this.renderTheBlock =
                         componentsObj[componentObjKey].blocks.render
                     this.renderTheElement = function (
-                        elementType,
-                        elementParent,
+                        elementType: any,
+                        elementParent: any,
                         params = { id: '', classList: [] }
                     ) {
                         const element = document.createElement(elementType)
@@ -153,7 +161,7 @@ export const components = {
 
                     this.cssPrefixOfComponent = componentType // вспомогательный префикс css-классов
                     this.cssPrefixMaking = function (
-                        cssPrefixOfComponentName = `${componentType}Name`
+                        cssPrefixOfComponentName: string = `${componentType}Name`
                     ) {
                         const className = `${componentType}_${cssPrefixOfComponentName}`
                         const cssPrefix = `${className}_`
@@ -167,9 +175,15 @@ export const components = {
                 }
             },
             ofComponentBlocks: class {
+                list: any
+                listUploadToAppObj: any
+                renderTheElement: any
+                cssPrefixOfBlock: any
+                cssPrefixMaking: any
+
                 constructor(
-                    componentType, // тип компонента (например: 'screen')
-                    componentObjKey = `` // ключ компонента в window.app.components (лучше его задавать)
+                    componentType: any, // тип компонента (например: 'screen')
+                    componentObjKey: string = `` // ключ компонента в window.app.components (лучше его задавать)
                 ) {
                     const isComponentKeyGiven = Boolean(componentObjKey)
                     if (!isComponentKeyGiven)
@@ -182,8 +196,8 @@ export const components = {
                     }
 
                     this.renderTheElement = function (
-                        elementType,
-                        elementParent,
+                        elementType: any,
+                        elementParent: any,
                         params = { id: '', classList: [] }
                     ) {
                         const element = document.createElement(elementType)

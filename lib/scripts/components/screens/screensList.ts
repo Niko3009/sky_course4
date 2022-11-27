@@ -1,8 +1,8 @@
 // ---------- СПИСОК ЭКРАНОВ ----------
 
-let list = {}
+let list: any = new Object()
 
-import { game } from './screensList/game/game.js'
+import { game } from './screensList/game/game'
 list['game'] = game
 
 export { list }
