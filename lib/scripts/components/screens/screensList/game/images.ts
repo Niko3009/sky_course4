@@ -44,7 +44,7 @@ import back from './img/cards/back.png'
 
 // Объект картинок
 
-let cardImages = {}
+let cardImages: any = new Object()
 
 cardImages['6_spades'] = spades6
 cardImages['7_spades'] = spades7

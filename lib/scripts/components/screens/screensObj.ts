@@ -1,21 +1,21 @@
 // ---------- ОБЪЕКТ ЭКРАНОВ ----------
 
-import { list as screensList } from './screensList.js'
-import { list as screenBlocksList } from './screenBlocksList.js'
-import { container as screenContainer } from './screenContainer.js'
+import { list as screensList } from './screensList'
+import { list as screenBlocksList } from './screenBlocksList'
+import { container as screenContainer } from './screenContainer'
 
 export const screens = {
     list: screensList,
 
     // Открытие экрана
-    open: function (newScreen) {
+    open: function (newScreen: string) {
         const appObj = window.app
         const appData = appObj.data
         const components = appObj.components
 
-        const screenBox = components.screens.template.box
         const screenDisplay = components.screens.template.display
-        const coverLayer = components.screens.template.coverLayer
+        const screenBox = components.screens.template.box
+        const screenCover = components.screens.template.cover
 
         const screenRendering = components.screens.list[newScreen] // функция отрисовки
 
@@ -65,7 +65,7 @@ export const screens = {
 
         makeDelay(delayBeforeScreenOpening, () => {
             appData.state.isScreenTransitionInProgress = true
-            coverLayer.style.display = 'block'
+            screenCover.style.display = 'block'
 
             const breakLine = `―――――――――――――――――― ЭКРАН «${newScreen.toUpperCase()}» ――――――――――――――――――`
             console.log(`\n`, breakLine, `\n\n`) // отметка в консоли
@@ -82,7 +82,7 @@ export const screens = {
 
             makeDelay(screenOpeningTime, () => {
                 appData.state.isScreenTransitionInProgress = false
-                coverLayer.style.removeProperty('display')
+                screenCover.style.removeProperty('display')
             })
         })
     },
@@ -93,9 +93,9 @@ export const screens = {
         const appData = appObj.data
         const components = appObj.components
 
-        const screenBox = components.screens.template.box
         const screenDisplay = components.screens.template.display
-        const coverLayer = components.screens.template.coverLayer
+        const screenBox = components.screens.template.box
+        const screenCover = components.screens.template.cover
 
         const currentScreenClosing = components.blockVisibility.On // анимация скрытия
         const screenAnimationTime = components.transitions.screenAnimationTime
@@ -123,14 +123,14 @@ export const screens = {
         // Закрытие экрана
 
         appData.state.isScreenTransitionInProgress = true
-        coverLayer.style.display = 'block'
+        screenCover.style.display = 'block'
 
         currentScreenClosing(screenDisplay, screenAnimationTime)
         const currentScreenClosingTime = screenClosingTime
 
         makeDelay(currentScreenClosingTime, () => {
             screenBox.innerHTML = ''
-            screenBox.classList = screenBox.classList[0]
+            screenDisplay.classList = screenDisplay.classList[0]
 
             appData.state.globalState = null // отметка в глобальном состоянии
             appData.state.globalStateNumber++
@@ -141,7 +141,12 @@ export const screens = {
             console.log(`\n\n\n`) // отметка в консоли
 
             appData.state.isScreenTransitionInProgress = false
-            coverLayer.style.removeProperty('display')
+            screenCover.style.removeProperty('display')
+
+            // ---------------ОСТАНОВКА ТАЙМЕРОВ ---------- !!!!!!
+
+            appObj.timers.stopAll()
+            appObj.timeouts.stopAll()
         })
     },
 
@@ -150,9 +155,9 @@ export const screens = {
         list: screenBlocksList,
 
         render: function (
-            blockName,
+            blockName: string,
             container = window.app.components.screens.template.box,
-            params = {}
+            params: any = new Object()
         ) {
             const blocks = window.app.components.screens.blocks
 

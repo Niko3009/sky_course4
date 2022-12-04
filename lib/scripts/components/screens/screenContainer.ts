@@ -1,7 +1,7 @@
 import {
     appContainer,
     componentContainerTemplate,
-} from '../componentContainerTemplate.js'
+} from '../componentContainerTemplate'
 
 const componentType = 'screen'
 const createTheContainer = function () {
@@ -10,11 +10,13 @@ const createTheContainer = function () {
 }
 
 let container = {
+    display: appContainer.querySelector(`.${componentType}`),
+
+    bg: appContainer.querySelector(`.${componentType}BG`),
     box: appContainer.querySelector(`.${componentType}Box`),
-    display: appContainer.querySelector(`.${componentType}Display`),
-    coverLayer: appContainer.querySelector(`.${componentType}CoverLayer`),
+    cover: appContainer.querySelector(`.${componentType}Cover`),
 }
 
-if (!container.box) container = createTheContainer()
+if (!container.display) container = createTheContainer()
 
 export { container, appContainer }

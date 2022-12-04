@@ -1,23 +1,48 @@
-// ------------------- БЛОКИ ДЛЯ ЭКРАНОВ -------------------
+// ------------------- БЛОКИ ДЛЯ МОДАЛЬНЫХ ОКОН -------------------
 
-let list = {}
+let list: any = new Object()
 
-// Кнопка
-list['button'] = function (
-    container,
-    params = { buttonName: 'Кнопка', buttonClass: 'regular' }
+// Заголовок окна
+list['modalTitle'] = function (
+    container: any,
+    params = { title: 'Заголовок окна' }
 ) {
     const componentsObj = window.app.components
     const objectForBlockListFilling =
         componentsObj.dev.forListFilling.ofComponentBlocks
-    const modalBlocks = new objectForBlockListFilling('screen')
+    const modalBlocks = new objectForBlockListFilling('modal')
+
+    const cssPrefix = modalBlocks.cssPrefixMaking('modalTitle')
+    const renderTheElement = modalBlocks.renderTheElement
+
+    // ОТРИСОВКА БЛОКА ----------------------
+
+    const titleLineParams = { classList: [cssPrefix + 'txt'] }
+    const titleLine = renderTheElement('h1', container, titleLineParams)
+
+    const title = params.title
+    if (typeof title === 'string') titleLine.innerHTML = title
+    else console.log('Заголовок окна не передан!')
+
+    return title
+}
+
+// Стандартная кнопка
+list['button'] = function (
+    container: any,
+    params = { buttonName: 'Стандартная кнопка' }
+) {
+    const componentsObj = window.app.components
+    const objectForBlockListFilling =
+        componentsObj.dev.forListFilling.ofComponentBlocks
+    const modalBlocks = new objectForBlockListFilling('modal')
 
     const cssPrefix = modalBlocks.cssPrefixMaking('button')
     const renderTheElement = modalBlocks.renderTheElement
 
     // ОТРИСОВКА БЛОКА ----------------------
 
-    const buttonParams = { classList: [cssPrefix + params.buttonClass] }
+    const buttonParams = { classList: [cssPrefix + 'regular'] }
     const button = renderTheElement('button', container, buttonParams)
 
     const buttonName = params.buttonName
@@ -27,41 +52,12 @@ list['button'] = function (
     return button
 }
 
-// Блок сообщения
-list['popUpMessage'] = function (container, params = { message: `Сообщение` }) {
-    const componentsObj = window.app.components
-    const objectForBlockListFilling =
-        componentsObj.dev.forListFilling.ofComponentBlocks
-    const modalBlocks = new objectForBlockListFilling('screen')
-
-    const cssPrefix = modalBlocks.cssPrefixMaking('popUpMessage')
-    const renderTheElement = modalBlocks.renderTheElement
-
-    // ОТРИСОВКА БЛОКА ----------------------
-
-    const msgDisplayParams = { classList: [cssPrefix + 'msgDisplay'] }
-    const messageDisplay = renderTheElement('div', container, msgDisplayParams)
-
-    const messageBox = document.createElement('div')
-    messageBox.classList.add(cssPrefix + 'msgBox')
-    messageDisplay.appendChild(messageBox)
-
-    const messageLine = document.createElement('p')
-    messageBox.appendChild(messageLine)
-
-    const message = params.message
-    if (typeof message === 'string') messageLine.innerHTML = message
-    else console.log('Сообщение не передано!')
-
-    return messageDisplay
-}
-
 // Блок таймера
-list['gameTimer'] = function (container) {
+list['gameTimer'] = function (container: any) {
     const componentsObj = window.app.components
     const objectForBlockListFilling =
         componentsObj.dev.forListFilling.ofComponentBlocks
-    const modalBlocks = new objectForBlockListFilling('screen')
+    const modalBlocks = new objectForBlockListFilling('modal')
 
     const cssPrefix = modalBlocks.cssPrefixMaking('gameTimer')
     const renderTheElement = modalBlocks.renderTheElement
@@ -80,29 +76,32 @@ list['gameTimer'] = function (container) {
 
     const pMin = document.createElement('p')
     pMin.textContent = 'min'
-    timerMinBox.appendChild(pMin)
+    // timerMinBox.appendChild(pMin)
     const pSec = document.createElement('p')
     pSec.textContent = 'sec'
-    timerSecBox.appendChild(pSec)
+    // timerSecBox.appendChild(pSec)
 
-    const hMin = document.createElement('h1')
+    const hMin: any = document.createElement('h1')
     hMin.textContent = '00'
     timerMinBox.appendChild(hMin)
-    const hSec = document.createElement('h1')
+    const hSec: any = document.createElement('h1')
     hSec.textContent = '.00'
     timerSecBox.appendChild(hSec)
 
     // Функционал
 
-    let timerData = {}
+    let timerData: any = new Object()
     timerData.selectorOfMinutes = hMin
     timerData.selectorOfSeconds = hSec
-    timerData.updateTime = {}
-    timerData.updateTime.byTimeData = function (minutes, seconds) {
+    timerData.updateTime = new Object()
+    timerData.updateTime.byTimeData = function (
+        minutes: number,
+        seconds: number
+    ) {
         hMin.textContent = minutes < 10 ? '0' + minutes : minutes
         hSec.textContent = seconds < 10 ? '.0' + seconds : '.' + seconds
     }
-    timerData.updateTime.bySecondsData = function (seconds) {
+    timerData.updateTime.bySecondsData = function (seconds: number) {
         const minutes = Math.floor(seconds / 60)
         const remainingSeconds = seconds - minutes * 60
 

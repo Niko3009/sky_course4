@@ -15,7 +15,7 @@ const createTheContainer = function () {
     return container
 }
 
-let appContainer = document.querySelector('#app')
+let appContainer: any = document.querySelector('#app')
 
 if (!appContainer) appContainer = createTheContainer()
 

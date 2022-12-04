@@ -1,10 +1,10 @@
 //------------------- ОБЪЕКТ ПРИЛОЖЕНИЯ -------------------
 
-import { appContainer } from './appContainer.js'
+import { appContainer } from './appContainer'
 
-import { launch as launchFunc } from './launchFunc.js'
-import { data as dataObj } from './dataObj.js'
-import { components as componentsObj } from './components/componentsObj.js'
+import { launch as launchFunc } from './launchFunc'
+import { data as dataObj } from './dataObj'
+import { components as componentsObj } from './components/componentsObj'
 
 export const app = {
     // ПРОЦЕДУРА ЗАПУСКА
@@ -19,13 +19,13 @@ export const app = {
     // ПОЛУЧЕНИЕ БЭК-ЭНД ДАННЫХ
     domainData: {
         dataRequest: function () {}, // -
-        httpRequest: function () {}, // см. lib\scripts\httpRequestFunc.js
+        httpRequest: function () {}, // см. lib\scripts\httpRequestFunc.ts
     },
 
     // ТАЙМЕРЫ И ОТСРОЧКИ
     timers: {
         list: [],
-        start(intervalInSeconds, func, param1, param2) {
+        start(intervalInSeconds: number, func: any, param1: any, param2: any) {
             let timerId = setInterval(() => {
                 func(param1, param2)
             }, intervalInSeconds * 1000)
@@ -33,7 +33,7 @@ export const app = {
             window.app.timers.list.push(timerId)
             return timerId
         },
-        stop(timerId) {
+        stop(timerId: number) {
             clearInterval(timerId)
 
             const timers = window.app.timers
@@ -41,13 +41,15 @@ export const app = {
             timers.list.splice(index, 1)
         },
         stopAll() {
-            window.app.timers.list.forEach((timer) => clearInterval(timer))
+            window.app.timers.list.forEach((timer: number) =>
+                clearInterval(timer)
+            )
             window.app.timers.list = []
         },
     },
     timeouts: {
         list: [],
-        start(intervalInSeconds, func, param1, param2) {
+        start(intervalInSeconds: number, func: any, param1: any, param2: any) {
             let timeoutId = setTimeout(() => {
                 func(param1, param2)
             }, intervalInSeconds * 1000)
@@ -55,7 +57,7 @@ export const app = {
             window.app.timeouts.list.push(timeoutId)
             return timeoutId
         },
-        stop(timeoutId) {
+        stop(timeoutId: number) {
             clearTimeout(timeoutId)
 
             const timeouts = window.app.timeouts
@@ -63,7 +65,9 @@ export const app = {
             timeouts.list.splice(index, 1)
         },
         stopAll() {
-            window.app.timeouts.list.forEach((timeout) => clearTimeout(timeout))
+            window.app.timeouts.list.forEach((timeout: number) =>
+                clearTimeout(timeout)
+            )
             window.app.timeouts.list = []
         },
     },

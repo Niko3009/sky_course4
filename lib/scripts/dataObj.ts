@@ -13,7 +13,6 @@ export const data = {
         modalNumber: 0,
 
         isAnimationInProgress: false,
-
         // isTransitionInProgress: false,
 
         isScreenTransitionInProgress: false,
@@ -22,13 +21,15 @@ export const data = {
 
     // ДАННЫЕ ИГРЫ
     game: {
+        status: 'outOfGame',
         difficulty: 0,
         time: {
             secondsAll: 0,
             seconds: 0,
             minutes: 0,
             summary: `0m 0s`,
-            updateTheData(secondsAll) {
+
+            updateTheData(secondsAll: number) {
                 const timeObj = window.app.data.game.time
 
                 const minutes = Math.floor(secondsAll / 60)
@@ -47,11 +48,13 @@ export const data = {
         resetDataToDefault() {
             const gameData = window.app.data.game
 
+            gameData.status = 'outOfGame'
             gameData.difficulty = 0
 
             gameData.time.secondsAll = 0
             gameData.time.seconds = 0
             gameData.time.minutes = 0
+            gameData.time.summary = `0m 0s`
 
             gameData.cards.involved = null
             gameData.cards.founded = null

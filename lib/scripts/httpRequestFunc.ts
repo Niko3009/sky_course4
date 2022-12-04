@@ -7,14 +7,14 @@ window.app.domainData.httpRequest = function ({
     body = '',
     responseType = 'json',
     requestType = 'json',
-    onSuccess = (data) => {
+    onSuccess = (data: any) => {
         console.log(data)
     },
-    onError = (data) => {
+    onError = (data: any) => {
         console.log(data)
     },
 }) {
-    const req = new XMLHttpRequest()
+    const req: any = new XMLHttpRequest()
     const bodyParams = new URLSearchParams(params)
     const successRequestStatus = 200
 
@@ -28,7 +28,7 @@ window.app.domainData.httpRequest = function ({
     req.responseType = responseType
 
     if (requestType === 'urlencoded') {
-        const headers = {
+        const headers: any = {
             'Content-type': 'application/x-www-form-urlencoded',
         }
 
@@ -45,7 +45,7 @@ window.app.domainData.httpRequest = function ({
     // console.log(`Data request (${method}) from URL:`);
     // console.log(url);
 
-    req.onload = function (event) {
+    req.onload = function (event: any) {
         const request = event.target
 
         // console.log(`Response received, status: #${request.status}`);

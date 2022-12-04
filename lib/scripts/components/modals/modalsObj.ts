@@ -1,21 +1,21 @@
 // ---------- ОБЪЕКТ МОДАЛЬНЫХ ОКОН (MODAL) ----------
 
-import { list as modalsList } from './modalsList.js'
-import { list as modalBlocksList } from './modalBlocksList.js'
-import { container as modalContainer } from './modalContainer.js'
+import { list as modalsList } from './modalsList'
+import { list as modalBlocksList } from './modalBlocksList'
+import { container as modalContainer } from './modalContainer'
 
 export const modals = {
     list: modalsList,
 
     // Открытие окна
-    open: function (newModal) {
+    open: function (newModal: string) {
         const appObj = window.app
         const appData = appObj.data
         const components = appObj.components
 
-        const modalBox = components.modals.template.box
         const modalDisplay = components.modals.template.display
-        const coverLayer = components.modals.template.coverLayer
+        const modalBox = components.modals.template.box
+        const modalCover = components.modals.template.cover
 
         const modalRendering = components.modals.list[newModal] // функция отрисовки
 
@@ -65,7 +65,7 @@ export const modals = {
 
         makeDelay(delayBeforeModalOpening, () => {
             appData.state.isModalTransitionInProgress = true
-            coverLayer.style.display = 'block'
+            modalCover.style.display = 'block'
 
             const breakLine = `··············· Окно «${newModal}» ···············`
             console.log(`\n`, breakLine, `\n\n`) // отметка в консоли
@@ -82,7 +82,7 @@ export const modals = {
 
             makeDelay(modalOpeningTime, () => {
                 appData.state.isModalTransitionInProgress = false
-                coverLayer.style.removeProperty('display')
+                modalCover.style.removeProperty('display')
             })
         })
     },
@@ -93,9 +93,9 @@ export const modals = {
         const appData = appObj.data
         const components = appObj.components
 
-        const modalBox = components.modals.template.box
         const modalDisplay = components.modals.template.display
-        const coverLayer = components.modals.template.coverLayer
+        const modalBox = components.modals.template.box
+        const modalCover = components.modals.template.cover
 
         const currentModalClosing = components.blockVisibility.On // анимация скрытия
         const modalAnimationTime = components.transitions.modalAnimationTime
@@ -103,8 +103,6 @@ export const modals = {
         const makeDelay = components.dev.makeDelay
 
         const modalClosingTime = components.transitions.modalClosingTime
-
-        coverLayer.style.display = 'block'
 
         // Предварительные проверки
 
@@ -125,14 +123,14 @@ export const modals = {
         // Закрытие окна
 
         appData.state.isModalTransitionInProgress = true
-        coverLayer.style.display = 'block'
+        modalCover.style.display = 'block'
 
         currentModalClosing(modalDisplay, modalAnimationTime)
         const currentModalClosingTime = modalClosingTime
 
         makeDelay(currentModalClosingTime, () => {
             modalBox.innerHTML = ''
-            modalBox.classList = modalBox.classList[0]
+            modalDisplay.classList = modalDisplay.classList[0]
 
             appData.state.globalState = null // отметка в глобальном состоянии
             appData.state.globalStateNumber++
@@ -143,7 +141,7 @@ export const modals = {
             console.log(`\n\n\n`) // отметка в консоли
 
             appData.state.isModalTransitionInProgress = false
-            coverLayer.style.removeProperty('display')
+            modalCover.style.removeProperty('display')
         })
     },
 
@@ -152,9 +150,9 @@ export const modals = {
         list: modalBlocksList,
 
         render: function (
-            blockName,
+            blockName: string,
             container = window.app.components.modals.template.box,
-            params = {}
+            params: any = new Object()
         ) {
             const blocks = window.app.components.modals.blocks
 
