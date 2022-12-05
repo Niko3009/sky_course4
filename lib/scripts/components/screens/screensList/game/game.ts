@@ -1,28 +1,21 @@
 // --------------------- ЭКРАН ИГРЫ ---------------------
 
-import { cardImages } from './images'
+import { screenRender } from './gameScreenRender'
+import { cardImages } from './gameImg'
 
 export const game = function () {
     const appObj = window.app
+    const gameData = appObj.data.game
     const componentsObj = appObj.components
-    const objectForComponentListFilling =
-        componentsObj.dev.forListFilling.ofComponents
-    const screens = new objectForComponentListFilling('screen')
-
-    const cssPrefix = screens.cssPrefixMaking(`game`)
-    const renderTheElement = screens.renderTheElement
-    const renderTheBlock = screens.renderTheBlock
-    const screenBox = screens.template.box
 
     const closeTheScreen = componentsObj.screens.close
     const openTheModal = componentsObj.modals.open
     const screenClosingTime = componentsObj.transitions.screenClosingTime
 
-    const makeTheTimeout = appObj.timeouts.start
+    const makeTheDelay = appObj.timeouts.start
     const timerStart = appObj.timers.start
     const timerStop = appObj.timers.stop
 
-    const gameData = appObj.data.game
     const updateDataOfGameTime = gameData.time.updateTheData
 
     // ДАННЫЕ ЭКРАНА ------------------------------------------------------------
@@ -39,60 +32,37 @@ export const game = function () {
     const cardsQty = difficultyPresets[difficulty]
 
     const cardFlipTime = 0.8
-    const delayBeforeCardFlip = 0
+    const delayBeforeCardFlip = 0.1
+    const cardFlipClass = 'flip-in-ver-left' // css-класс анимации
 
     // ОТРИСОВКА ЭКРАНА ------------------------------------------------------------
 
-    // Блок - header
+    const blockList = screenRender(difficulty, cardsQty)
 
-    const headerParams = { classList: [cssPrefix + `header`] }
-    const header = renderTheElement('div', screenBox, headerParams)
-
-    const gameTimerBlock = renderTheBlock('gameTimer', header)
-
-    const restartBtnParams = { buttonName: 'Начать заново' }
-    const restartBtn = renderTheBlock('button', header, restartBtnParams)
-
-    // Блок - игровое поле (блок с картами)
-
-    const gameFieldParams = { classList: [cssPrefix + 'gameField'] }
-    const gameField = renderTheElement('div', screenBox, gameFieldParams)
-
-    const cardsCollectionBox = document.createElement('div')
-    const cardsCollectionBoxClass = `gameField_cardsCollectionBox_${difficulty}`
-    cardsCollectionBox.classList.add(cssPrefix + cardsCollectionBoxClass)
-    gameField.appendChild(cardsCollectionBox)
-
-    let cardBoxesList = [] // список селекторов с картами
-    for (let cardNum = 1; cardNum <= cardsQty; cardNum++) {
-        // поле с картами
-        const cardBox = document.createElement('div')
-        cardBox.classList.add(cssPrefix + 'gameField_cardBox')
-        cardsCollectionBox.appendChild(cardBox)
-
-        const cardImg = document.createElement('img')
-        cardImg.src = cardImages['back']
-        cardBox.appendChild(cardImg)
-
-        cardBoxesList.push(cardBox)
-    }
-
-    // Блок - footer
-
-    const footer = document.createElement('div')
-    footer.classList.add(cssPrefix + `footer`)
-    screenBox.appendChild(footer)
-
-    const btnTurnCardsParams = { buttonName: 'Выйти из игры' }
-    const btnTurnCards = renderTheBlock('button', footer, btnTurnCardsParams)
+    const gameTimer = blockList.gameTimer
+    const cardsSetBox = blockList.cardsSetBox
+    const restartBtn = blockList.restartBtn
+    const exitBtn = blockList.exitBtn
 
     // ФУНКЦИОНАЛ ------------------------------------------------------------
+    const gameStart = function () {
+        const cards = cardsOnGameField
+        const delayBeforeCardShowing = 1
+        const timeOfCardShowing = 5
 
-    const gameExit = function () {
-        closeTheScreen()
-        setTimeout(() => {
-            openTheModal('difficulty selection')
-        }, screenClosingTime * 1000)
+        makeTheDelay(delayBeforeCardShowing, () => {
+            for (const card of cards) actionWithCard.flip(card) // раскрываем все карты игроку
+        })
+
+        makeTheDelay(delayBeforeCardShowing + timeOfCardShowing, () => {
+            for (const card of cards) actionWithCard.flip(card) // скрываем все карты
+
+            gameTimerID = timerStart(1, updateTime) // запускаем таймер игры
+
+            hasTheGameStarted = true
+
+            console.log('\n', `История игры:`, '\n\n')
+        })
     }
 
     const gameReload = function () {
@@ -101,24 +71,11 @@ export const game = function () {
         if (currentScreen) window.app.components.screens.open(currentScreen)
     }
 
-    const gameStart = function () {
-        const cards = cardsOnGameField
-        const delayBeforeCardShowing = 1
-        const timeOfCardShowing = 5
-
-        makeTheTimeout(delayBeforeCardShowing, () => {
-            for (const card of cards) flipTheCard(card) // раскрываем все карты игроку
-        })
-
-        makeTheTimeout(delayBeforeCardShowing + timeOfCardShowing, () => {
-            for (const card of cards) flipTheCard(card) // скрываем все карты
-
-            gameTimerID = timerStart(1, updateTime) // запускаем таймер игры
-
-            hasTheGameStarted = true
-
-            console.log('\n', `История игры:`, '\n\n')
-        })
+    const gameExit = function () {
+        closeTheScreen()
+        setTimeout(() => {
+            openTheModal('difficulty selection')
+        }, screenClosingTime * 1000)
     }
 
     const updateTime = function () {
@@ -129,7 +86,7 @@ export const game = function () {
         const seconds = gameData.time.seconds
         const minutes = gameData.time.minutes
 
-        gameTimerBlock.updateTime.byTimeData(minutes, seconds) // обновление блока таймера (на экране)
+        gameTimer.updateTime.byTimeData(minutes, seconds) // обновление блока таймера (на экране)
     }
 
     const generateCards = function (cardBoxesList: any) {
@@ -214,96 +171,122 @@ export const game = function () {
         return cardsOnGameField
     }
 
-    const flipTheCard = function (card: any) {
-        const cardBox = card.selector
-        const cardImg = cardBox.querySelector('img')
-        const isCardHidden = card.isCardHidden
+    const actionWithCard = {
+        flip: function (card: any) {
+            const cardBox = card.selector
+            const cardImg = cardBox.querySelector('img')
+            const isCardHidden = card.isCardHidden
 
-        const animationClass = 'flip-in-ver-left'
-        const animationTime = cardFlipTime
-        const delayBeforeAnimation = delayBeforeCardFlip
+            const animationTime = cardFlipTime
+            const delayBeforeAnimation = delayBeforeCardFlip
+            const animationClass = cardFlipClass
 
-        const isAnimationInProgress = Boolean(cardBox.style.animation)
-        if (isAnimationInProgress) return false
+            const isAnimationInProgress = Boolean(cardBox.style.animation)
+            if (isAnimationInProgress) return false
 
-        makeTheTimeout(delayBeforeAnimation, () => {
-            cardBox.style.animation = `${animationClass} ${animationTime}s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`
-            cardBox.classList.add(animationClass)
-
-            makeTheTimeout(animationTime / 2, () => {
-                isCardHidden
-                    ? (cardImg.src = cardImg.src = cardImages[card.name])
-                    : (cardImg.src = cardImages['back'])
+            makeTheDelay(delayBeforeAnimation, () => {
+                cardBox.style.animation = `${animationClass} ${animationTime}s`
+                cardBox.classList.add(animationClass)
+                makeTheDelay(animationTime / 2, () => {
+                    isCardHidden
+                        ? (cardImg.src = cardImg.src = cardImages[card.name])
+                        : (cardImg.src = cardImages['back'])
+                })
             })
-        })
 
-        makeTheTimeout(delayBeforeAnimation + animationTime, () => {
+            makeTheDelay(delayBeforeAnimation + animationTime, () => {
+                cardBox.classList.remove(animationClass)
+                cardBox.style.removeProperty('animation')
+
+                isCardHidden
+                    ? (card.isCardHidden = false)
+                    : (card.isCardHidden = true)
+            })
+
+            return true
+        },
+        open: function (card: any) {
+            if (!hasTheGameStarted || numberOfActiveCards > 1) return
+
+            const isCardHidden = Boolean(card.isCardHidden)
+            if (!isCardHidden) return
+
+            const isCardFlipSuccessful = actionWithCard.flip(card)
+            if (!isCardFlipSuccessful) return
+
+            numberOfActiveCards++
+
+            makeTheDelay(delayBeforeCardFlip + cardFlipTime, () => {
+                const time = gameData.time.summary
+                const value = card.rank + card.suitImg
+                const num = card.placeNumber
+
+                console.log(`${time}: открыта карта № ${num} ( ${value} )`)
+
+                if (!lastActivatedCard) {
+                    lastActivatedCard = card
+                    return
+                }
+
+                twoCardsComparing(card, lastActivatedCard)
+
+                lastActivatedCard = null
+                numberOfActiveCards = 0
+            })
+        },
+        close: function (card: any) {
+            const isCardHidden = Boolean(card.isCardHidden)
+            if (isCardHidden) return
+
+            const isCardFlipSuccessful = actionWithCard.flip(card)
+            if (!isCardFlipSuccessful) return
+        },
+        remove: function (card: any) {
+            const cardBox = card.selector
+            const cardImg = cardBox.querySelector('img')
+
+            const animationTime = cardFlipTime
+            const delayBeforeAnimation = delayBeforeCardFlip
+            const animationClass = cardFlipClass
+
             cardBox.classList.remove(animationClass)
             cardBox.style.removeProperty('animation')
 
-            isCardHidden
-                ? (card.isCardHidden = false)
-                : (card.isCardHidden = true)
-        })
+            makeTheDelay(delayBeforeAnimation, () => {
+                cardBox.style.animation = `${animationClass} ${animationTime}s`
+                cardBox.classList.add(animationClass)
 
-        return true
-    }
+                makeTheDelay(animationTime / 2, () => {
+                    cardImg.style.display = 'none'
+                })
+            })
 
-    const openTheCard = function (card: any) {
-        if (!hasTheGameStarted || numberOfActiveCards > 1) return
+            makeTheDelay(delayBeforeAnimation + animationTime, () => {
+                cardBox.classList.remove(animationClass)
+                cardBox.style.removeProperty('animation')
+            })
 
-        const isCardHidden = Boolean(card.isCardHidden)
-        if (!isCardHidden) return
+            const firstCardIndex = cardsOnGameField.indexOf(card)
+            cardsOnGameField.splice(firstCardIndex, 1)
 
-        const isCardFlipSuccessful = flipTheCard(card)
-        if (!isCardFlipSuccessful) return
-
-        numberOfActiveCards++
-
-        makeTheTimeout(delayBeforeCardFlip + cardFlipTime, () => {
-            const time = gameData.time.summary
-            const value = card.rank + card.suitImg
-            const num = card.placeNumber
-
-            console.log(`${time}: открыта карта № ${num} ( ${value} )`)
-
-            if (!lastActivatedCard) {
-                lastActivatedCard = card
-                return
-            }
-
-            twoCardsComparing(card, lastActivatedCard)
-
-            lastActivatedCard = null
-            numberOfActiveCards = 0
-        })
-    }
-
-    const closeTheCard = function (card: any) {
-        const isCardHidden = Boolean(card.isCardHidden)
-        if (isCardHidden) return
-
-        const isCardFlipSuccessful = flipTheCard(card)
-        if (!isCardFlipSuccessful) return
+            return true
+        },
     }
 
     const twoCardsComparing = function (firstCard: any, secondCard: any) {
         const areCardsSame = firstCard.name === secondCard.name
 
         if (areCardsSame) {
-            const firstCardIndex = cardsOnGameField.indexOf(firstCard)
-            cardsOnGameField.splice(firstCardIndex, 1)
-
-            const secondCardIndex = cardsOnGameField.indexOf(secondCard)
-            cardsOnGameField.splice(secondCardIndex, 1)
+            actionWithCard.remove(firstCard)
+            actionWithCard.remove(secondCard)
 
             gameData.cards.founded.push(firstCard.name)
 
             if (cardsOnGameField.length === 0) gameFinish(true)
         } else {
-            makeTheTimeout(delayBeforeCardFlip + cardFlipTime, () => {
-                closeTheCard(firstCard)
-                closeTheCard(secondCard)
+            makeTheDelay(delayBeforeCardFlip + cardFlipTime, () => {
+                // actionWithCard.close(firstCard)
+                // actionWithCard.close(secondCard)
 
                 gameFinish(false)
             })
@@ -323,24 +306,25 @@ export const game = function () {
 
     // СОБЫТИЯ ------------------------------------------------------------
 
-    gameData.status = 'inGame'
-
     let hasTheGameStarted: boolean = false
     let lastActivatedCard: any = null
     let numberOfActiveCards: number = 0
     let gameTimeInSec: number = 0
     let gameTimerID: number
 
-    btnTurnCards.addEventListener('click', gameExit)
+    gameData.status = 'inGame'
+
+    exitBtn.addEventListener('click', gameExit)
     restartBtn.addEventListener('click', gameReload)
 
+    const cardBoxesList = Array.from(cardsSetBox.children) // список селекторов с картами
     const cardsOnGameField = generateCards(cardBoxesList)
 
     console.log('\n', `Число задействованных карт: ${cardsQty}`, '\n\n')
 
     for (const card of cardsOnGameField)
         card.selector.addEventListener('click', () => {
-            openTheCard(card)
+            actionWithCard.open(card)
         })
 
     gameStart() // старт игры

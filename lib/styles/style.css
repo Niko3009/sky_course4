@@ -378,7 +378,7 @@ main {
   overflow: visible;
 }
 
-.screenBox *.screen_game_gameField_cardsCollectionBox_1 {
+.screenBox *.screen_game_gameField_cardsSetBox_1 {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (140px)[3];
@@ -389,7 +389,7 @@ main {
   overflow: visible;
 }
 
-.screenBox *.screen_game_gameField_cardsCollectionBox_2 {
+.screenBox *.screen_game_gameField_cardsSetBox_2 {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (120px)[4];
@@ -400,7 +400,7 @@ main {
   overflow: visible;
 }
 
-.screenBox *.screen_game_gameField_cardsCollectionBox_3 {
+.screenBox *.screen_game_gameField_cardsSetBox_3 {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (120px)[6];
@@ -411,7 +411,7 @@ main {
   overflow: visible;
 }
 
-.screenBox *.screen_game_gameField_cardsCollectionBox_4 {
+.screenBox *.screen_game_gameField_cardsSetBox_4 {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (100px)[9];

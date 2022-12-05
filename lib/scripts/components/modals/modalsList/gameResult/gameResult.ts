@@ -1,6 +1,6 @@
 // --------------------- ОКНО РЕЗУЛЬТАТА ИГРЫ ---------------------
 
-import { images } from './images'
+import { images } from './gameResultImg'
 
 export const gameResult = function () {
     const appObj = window.app

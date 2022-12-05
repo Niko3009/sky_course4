@@ -34,7 +34,7 @@ export const screens = {
         const doesNewScreenExist = Boolean(screenRendering)
         if (!doesNewScreenExist) {
             const warning = `Экрана «${newScreen}» в window.app.components.screens.list нет`
-            console.log(`❗`, warning)
+            console.error(warning)
             return
         }
 
@@ -44,7 +44,7 @@ export const screens = {
             const warning =
                 `Открыть экран «${newScreen}» сейчас нельзя:\n ` +
                 `переход уже запущен`
-            console.log(`❗`, warning)
+            console.error(warning)
             return
         }
 
@@ -116,7 +116,7 @@ export const screens = {
             const warning =
                 `Закрыть экран «${currentScreen}» сейчас нельзя:\n ` +
                 `переход уже запущен`
-            console.log(`❗`, warning)
+            console.error(warning)
             return
         }
 
@@ -163,12 +163,12 @@ export const screens = {
 
             if (blocks.list[blockName] === undefined) {
                 const warning = `Блока ${blockName} в components.screens.blocks.list нет`
-                console.log(`❗`, warning)
+                console.error(warning)
                 return
             }
             if (container === null) {
                 const warning = `В body нет поля (контейнера), введенного для ${blockName}`
-                console.log(`❗`, warning)
+                console.error(warning)
                 return
             }
 
