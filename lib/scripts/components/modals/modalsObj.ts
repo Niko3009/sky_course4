@@ -34,7 +34,7 @@ export const modals = {
         const doesNewModalExist = Boolean(modalRendering)
         if (!doesNewModalExist) {
             const warning = `Окна «${newModal}» в window.app.components.modals.list нет`
-            console.log(`❗`, warning)
+            console.error(warning)
             return
         }
 
@@ -44,7 +44,7 @@ export const modals = {
             const warning =
                 `Открыть окно «${newModal}» сейчас нельзя:\n ` +
                 `переход уже запущен`
-            console.log(`❗`, warning)
+            console.error(warning)
             return
         }
 
@@ -116,7 +116,7 @@ export const modals = {
             const warning =
                 `Закрыть окно «${currentModal}» сейчас нельзя:\n ` +
                 `переход уже запущен`
-            console.log(`❗`, warning)
+            console.error(warning)
             return
         }
 
@@ -158,12 +158,12 @@ export const modals = {
 
             if (blocks.list[blockName] === undefined) {
                 const warning = `Блока ${blockName} в components.modals.blocks.list нет`
-                console.log(`❗`, warning)
+                console.error(warning)
                 return
             }
             if (container === null) {
                 const warning = `В body нет поля (контейнера), введенного для ${blockName}`
-                console.log(`❗`, warning)
+                console.error(warning)
                 return
             }
 

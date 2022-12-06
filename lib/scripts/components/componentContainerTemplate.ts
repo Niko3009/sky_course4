@@ -1,6 +1,8 @@
 import { appContainer } from '../appContainer'
 
-const componentContainerTemplate = class {
+export { appContainer }
+
+export const componentContainerTemplate = class {
     display: any
     bg: any
     box: any
@@ -35,5 +37,3 @@ const componentContainerTemplate = class {
         this.cover = cover // верхний слой для блокировки контента
     }
 }
-
-export { componentContainerTemplate, appContainer }

@@ -16,7 +16,7 @@ export const difficultySelection = function () {
     const closeTheModal = componentsObj.modals.close
     const modalClosingTime = componentsObj.transitions.modalClosingTime
 
-    const makeTheTimeout = appObj.timeouts.start
+    const makeTheDelay = appObj.timeouts.start
 
     // ОТРИСОВКА ЭКРАНА ------------------------------------------------------------
 
@@ -45,13 +45,13 @@ export const difficultySelection = function () {
 
     function gameStart() {
         // сигнал, если сложность не выбрана
-        if (selectedDifficulty === undefined) {
+        if (selectedDifficulty === 0) {
             const errorTime = 0.5
 
             for (const button of optionBlockBtns)
                 button.classList.add('errorOption')
 
-            makeTheTimeout(errorTime, () => {
+            makeTheDelay(errorTime, () => {
                 for (const button of optionBlockBtns)
                     button.classList.remove('errorOption')
             })
@@ -67,7 +67,7 @@ export const difficultySelection = function () {
 
         closeTheModal()
         const nameOfGameScreen = 'game'
-        makeTheTimeout(modalClosingTime, () => {
+        makeTheDelay(modalClosingTime, () => {
             openTheScreen(nameOfGameScreen)
         })
     }
