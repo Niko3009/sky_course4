@@ -1,0 +1,67 @@
+// ----------------------- GENERAL FOR BODY ----------------------
+//
+
+$color-bg: #004980;
+
+$color-block-1: #c2f5ff;
+$color-block-2: #fff;
+
+$color-text-1: $color-bg;
+$color-text-2: #0080c1;
+$color-text-3: $color-block-2;
+$color-text-4: #000;
+
+$color-all-1: #7ac100;
+
+.modal_difficultySelection {
+  &_selectionBlock {
+    overflow: visible;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    gap: 24px;
+
+    & button {
+      width: 98px;
+      height: 98px;
+
+      background: $color-block-2;
+      border-radius: 12px;
+      border: 2px solid $color-block-2;
+
+      font-style: normal;
+      font-weight: 400;
+      font-size: 64px;
+      line-height: 72px;
+      text-align: center;
+      color: $color-text-2;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+
+      &.selectedOption {
+        border: 2px solid $color-all-1;
+      }
+
+      &.resultOption {
+        background: $color-all-1;
+        color: $color-block-2;
+      }
+
+      &.errorOption {
+        background: lightcoral;
+      }
+    }
+  }
+}

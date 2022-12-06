@@ -1,0 +1,28 @@
+.modal_gameResult_resultImg {
+  height: 96px;
+}
+
+.modal_gameResult_timeBlock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.modal_gameResult_timeBlock > p {
+  min-height: 32px;
+  font-style: normal;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 32px;
+}
+/*# sourceMappingURL=modalStyle.css.map */

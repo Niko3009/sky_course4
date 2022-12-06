@@ -12,11 +12,12 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "test:jest": "jest",
         "format": "prettier --write ./lib/",
-        "lint:scripts": "eslint ./lib/**/*.ts",
-        "lint:css": "stylelint ./lib/**/*.scss",
+        "lint:scripts": "eslint ./lib/**/*.js",
+        "lint:styles": "stylelint ./lib/**/*.scss",
         "prepare": "husky install",
         "lint:ts": "tsc --noEmit",
-        "lint": "npm run lint:ts npm run eslint ./lib/**/*.ts && npm run lint:ts && "
+        "lint": "npm run lint:ts && npm run lint:scss",
+        "pre-commit:test": "npm run test:jest && npm run lint"
     },
     "repository": {
         "type": "git",

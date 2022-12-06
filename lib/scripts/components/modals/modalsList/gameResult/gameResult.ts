@@ -1,5 +1,7 @@
 // --------------------- ОКНО РЕЗУЛЬТАТА ИГРЫ ---------------------
 
+import './style/modalStyle.css'
+
 import { images } from './gameResultImg'
 
 export const gameResult = function () {

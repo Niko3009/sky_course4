@@ -1,0 +1,37 @@
+// ----------------------- GENERAL FOR BODY ----------------------
+//
+
+$color-bg: #004980;
+
+$color-block-1: #c2f5ff;
+$color-block-2: #fff;
+
+$color-text-1: $color-bg;
+$color-text-2: #0080c1;
+$color-text-3: $color-block-2;
+$color-text-4: #000;
+
+$color-all-1: #7ac100;
+
+.modal_gameResult {
+  &_resultImg {
+    height: 96px;
+  }
+
+  &_timeBlock {
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    &>p {
+      min-height: 32px;
+
+      font-style: normal;
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 32px;
+    }
+  }
+}

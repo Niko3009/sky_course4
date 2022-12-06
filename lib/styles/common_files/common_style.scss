@@ -4,7 +4,7 @@
 $color-dark: rgb(15, 15, 15);
 $color-bright: rgb(0, 160, 230);
 
-$color-light: #ffffff;
+$color-light: #fff;
 
 $color-4: #7ac100;
 
@@ -22,8 +22,8 @@ body {
     & .center {
         $content-padding: calc(50% - 1200px / 2);
 
-        padding-left: $content-padding;
-        padding-right: $content-padding;
+        // padding-left: $content-padding;
+        // padding-right: $content-padding;
 
         padding-left: MAX($content-padding, 16px);
         padding-right: MAX($content-padding, 16px);
@@ -43,29 +43,29 @@ body {
 
     transition: all 0.5s;
 
-    //стили для scrollbar
+    // стили для scrollbar
     * {
         scrollbar-width: thin;
         scrollbar-color: grey transparent;
 
-        /* ширина scrollbar */
+        // ширина scrollbar 
         &::-webkit-scrollbar {
             width: 5px;
             height: 5px;
         }
 
-        /* цвет дорожки */
+        // цвет дорожки
         &::-webkit-scrollbar-track {
             background: transparent;
         }
 
         &::-webkit-scrollbar-thumb {
             background-color: grey;
-            /* цвет плашки */
+            //   цвет плашки */
             border-radius: 5px;
-            /* закругления плашки */
+            //   закругления плашки */
             border: 1px solid transparent;
-            /* padding вокруг плашки */
+            //   padding вокруг плашки */
         }
     }
 }
@@ -149,7 +149,7 @@ p {
     font-style: normal;
     font-weight: 600;
     font-size: 22px;
-    // line-height: 32px;
+
 
     color: $color-dark;
 
