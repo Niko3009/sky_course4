@@ -1,5 +1,7 @@
 // --------------------- ОКНО ВЫБОРА СЛОЖНОСТИ ---------------------
 
+import './style/modalStyle.css'
+
 export const difficultySelection = function () {
     const appObj = window.app
     const componentsObj = appObj.components

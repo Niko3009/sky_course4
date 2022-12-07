@@ -4,7 +4,6 @@ import * as _ from 'lodash'
 
 import { app } from './scripts/appObj'
 
-
 declare global {
     interface Window {
         app: any

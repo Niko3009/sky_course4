@@ -1,0 +1,153 @@
+.flip-in-ver-left {
+  -webkit-animation: flip-in-ver-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+          animation: flip-in-ver-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes flip-in-ver-left {
+  0% {
+    -webkit-transform: rotateY(0);
+            transform: rotateY(0);
+    opacity: 1;
+  }
+  45% {
+    -webkit-transform: rotateY(90deg);
+            transform: rotateY(90deg);
+    opacity: 1;
+  }
+  55% {
+    -webkit-transform: rotateY(90deg);
+            transform: rotateY(90deg);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotateY(0);
+            transform: rotateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes flip-in-ver-left {
+  0% {
+    -webkit-transform: rotateY(0);
+            transform: rotateY(0);
+    opacity: 1;
+  }
+  45% {
+    -webkit-transform: rotateY(90deg);
+            transform: rotateY(90deg);
+    opacity: 1;
+  }
+  55% {
+    -webkit-transform: rotateY(90deg);
+            transform: rotateY(90deg);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotateY(0);
+            transform: rotateY(0);
+    opacity: 1;
+  }
+}
+
+.screen_game_header {
+  width: 100%;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  min-width: 760px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.screen_game_gameField {
+  width: 100%;
+  height: 640px;
+  border: 0px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px;
+  overflow: visible;
+}
+
+.screen_game_gameField_cardsSetBox_1 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (140px)[3];
+      grid-template-columns: repeat(3, 140px);
+  -ms-grid-rows: (200px)[2];
+      grid-template-rows: repeat(2, 200px);
+  gap: 15px;
+  overflow: visible;
+}
+
+.screen_game_gameField_cardsSetBox_2 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (120px)[4];
+      grid-template-columns: repeat(4, 120px);
+  -ms-grid-rows: (165px)[3];
+      grid-template-rows: repeat(3, 165px);
+  gap: 15px;
+  overflow: visible;
+}
+
+.screen_game_gameField_cardsSetBox_3 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (120px)[6];
+      grid-template-columns: repeat(6, 120px);
+  -ms-grid-rows: (165px)[3];
+      grid-template-rows: repeat(3, 165px);
+  gap: 15px;
+  overflow: visible;
+}
+
+.screen_game_gameField_cardsSetBox_4 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (100px)[9];
+      grid-template-columns: repeat(9, 100px);
+  -ms-grid-rows: (140px)[4];
+      grid-template-rows: repeat(4, 140px);
+  gap: 15px;
+  overflow: visible;
+}
+
+.screen_game_gameField_cardBox {
+  cursor: pointer;
+}
+
+.screen_game_gameField_cardBox img {
+  width: 100%;
+  height: 100%;
+}
+
+.screen_game_gameField_cardBox:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+/*# sourceMappingURL=gameStyle.css.map */

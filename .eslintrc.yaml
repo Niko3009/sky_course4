@@ -6,7 +6,9 @@
     'rules':
         {
             'prettier/prettier': ['error', { 'endOfLine': 'auto' }],
+            
             'camelcase': ['error'],
             'eqeqeq': ['error', 'always'],
+            'no-trailing-whitespace': null,
         },
 }

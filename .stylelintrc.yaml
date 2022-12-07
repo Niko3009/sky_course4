@@ -7,10 +7,72 @@
             'stylelint-config-standard-scss',
             'stylelint-config-prettier-scss',
         ],
+
     rules:
         {
-            'prettier/prettier': ['error', { 'endOfLine': 'auto' }],
-            'at-rule-empty-line-before': true,
-            'no-trailing-whitespace': false,
+            'prettier/prettier': null,
+
+            'rule-empty-line-before': ['always', { 'ignore': [
+                                'after-comment',
+                                'first-nested',
+                                # 'inside-single-line-block',
+                            ] }],
+            'at-rule-empty-line-before':
+                [
+                    'always',
+                    {
+                        'ignore':
+                            [
+                                'after-comment',
+                                'first-nested',
+                                'inside-block',
+                                'blockless-after-same-name-blockless',
+                                'blockless-after-blockless',
+                            ],
+                    },
+                ],
+            'declaration-empty-line-before':
+                [
+                    'always',
+                    {
+                        ignore:
+                            [
+                                'after-comment',
+                                'after-declaration',
+                                'first-nested',
+                                'inside-single-line-block',
+                            ],
+                    },
+                ],
+
+            'scss/double-slash-comment-empty-line-before':
+                [
+                    'always',
+                    {
+                        ignore:
+                            [
+                                'between-comments',
+                                'stylelint-commands',
+                                'inside-block',
+                            ],
+                    },
+                ],
+            'scss/dollar-variable-empty-line-before': null,
+
+            'selector-class-pattern': null,
+
+            'length-zero-no-unit': [null, { ignore: ['custom-properties'] }],
+            'block-no-empty': null,
+            'color-function-notation': null,
+            'no-missing-end-of-source-newline': null,
+
+            'scss/at-import-partial-extension': null,
+            'scss/comment-no-empty': null,
+
+            'no-duplicate-selectors': null,
+            'font-family-no-missing-generic-family-keyword': null,
+            'font-family-name-quotes': 'always-unless-keyword',
+
+            'function-name-case': ['lower', { ignoreFunctions: ['MAX'] }],
         },
 }

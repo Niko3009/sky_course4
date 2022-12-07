@@ -3,7 +3,13 @@
 import { screens as screensObj } from './screens/screensObj'
 import { modals as modalsObj } from './modals/modalsObj'
 
-export const components = {
+export const components: {
+    screens: any
+    modals: any
+    blockVisibility: any
+    transitions: any
+    dev: any
+} = {
     // ЭКРАНЫ
     screens: screensObj,
 

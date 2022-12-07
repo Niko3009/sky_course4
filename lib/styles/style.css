@@ -1,11 +1,8 @@
-@charset "UTF-8";
 body {
   background-color: #e6e6e6;
 }
 
 body .center {
-  padding-left: calc(50% - 1200px / 2);
-  padding-right: calc(50% - 1200px / 2);
   padding-left: MAX(calc(50% - 1200px / 2), 16px);
   padding-right: MAX(calc(50% - 1200px / 2), 16px);
   overflow-x: auto;
@@ -25,8 +22,6 @@ body .center {
 * * {
   scrollbar-width: thin;
   scrollbar-color: grey transparent;
-  /* ширина scrollbar */
-  /* цвет дорожки */
 }
 
 * *::-webkit-scrollbar {
@@ -40,11 +35,8 @@ body .center {
 
 * *::-webkit-scrollbar-thumb {
   background-color: grey;
-  /* цвет плашки */
   border-radius: 5px;
-  /* закругления плашки */
   border: 1px solid transparent;
-  /* padding вокруг плашки */
 }
 
 button {
@@ -63,7 +55,7 @@ button {
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
-  color: #ffffff;
+  color: #fff;
   cursor: pointer;
 }
 
@@ -74,11 +66,11 @@ button:active {
 
 button:hover {
   background: #0f0f0f;
-  color: #ffffff;
+  color: #fff;
 }
 
 button:disabled {
-  background: #ffffff;
+  background: #fff;
   color: gray;
   border: 2px solid gray;
   -webkit-transform: none;
@@ -94,7 +86,7 @@ input {
   height: 40px;
   border-radius: 20px;
   border: 2px solid #0f0f0f;
-  background: #ffffff;
+  background: #fff;
   outline: none;
   font-style: normal;
   font-weight: 400;
@@ -171,57 +163,6 @@ div.tooltip p {
   font-size: 16px;
   color: black;
   text-align: justify;
-}
-
-.flip-in-ver-left {
-  -webkit-animation: flip-in-ver-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation: flip-in-ver-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-}
-
-@-webkit-keyframes flip-in-ver-left {
-  0% {
-    -webkit-transform: rotateY(0);
-            transform: rotateY(0);
-    opacity: 1;
-  }
-  45% {
-    -webkit-transform: rotateY(90deg);
-            transform: rotateY(90deg);
-    opacity: 1;
-  }
-  55% {
-    -webkit-transform: rotateY(90deg);
-            transform: rotateY(90deg);
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: rotateY(0);
-            transform: rotateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes flip-in-ver-left {
-  0% {
-    -webkit-transform: rotateY(0);
-            transform: rotateY(0);
-    opacity: 1;
-  }
-  45% {
-    -webkit-transform: rotateY(90deg);
-            transform: rotateY(90deg);
-    opacity: 1;
-  }
-  55% {
-    -webkit-transform: rotateY(90deg);
-            transform: rotateY(90deg);
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: rotateY(0);
-            transform: rotateY(0);
-    opacity: 1;
-  }
 }
 
 body {
@@ -334,109 +275,7 @@ main {
   gap: 20px;
 }
 
-.screenBox *.screen_game_header {
-  width: 100%;
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
-  min-width: 760px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding-left: 100px;
-  padding-right: 100px;
-}
-
-.screenBox *.screen_game_gameField {
-  width: 100%;
-  height: 640px;
-  border: 0px solid black;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 10px;
-  overflow: visible;
-}
-
-.screenBox *.screen_game_gameField_cardsSetBox_1 {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (140px)[3];
-      grid-template-columns: repeat(3, 140px);
-  -ms-grid-rows: (200px)[2];
-      grid-template-rows: repeat(2, 200px);
-  gap: 15px;
-  overflow: visible;
-}
-
-.screenBox *.screen_game_gameField_cardsSetBox_2 {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (120px)[4];
-      grid-template-columns: repeat(4, 120px);
-  -ms-grid-rows: (165px)[3];
-      grid-template-rows: repeat(3, 165px);
-  gap: 15px;
-  overflow: visible;
-}
-
-.screenBox *.screen_game_gameField_cardsSetBox_3 {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (120px)[6];
-      grid-template-columns: repeat(6, 120px);
-  -ms-grid-rows: (165px)[3];
-      grid-template-rows: repeat(3, 165px);
-  gap: 15px;
-  overflow: visible;
-}
-
-.screenBox *.screen_game_gameField_cardsSetBox_4 {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (100px)[9];
-      grid-template-columns: repeat(9, 100px);
-  -ms-grid-rows: (140px)[4];
-      grid-template-rows: repeat(4, 140px);
-  gap: 15px;
-  overflow: visible;
-}
-
-.screenBox *.screen_game_gameField_cardBox {
-  cursor: pointer;
-}
-
-.screenBox *.screen_game_gameField_cardBox img {
-  width: 100%;
-  height: 100%;
-}
-
-.screenBox *.screen_game_gameField_cardBox:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
-}
-
-.screenBox *.screenBlock_popUpMessage_msgDisplay {
+.screen .screenBlock_popUpMessage_msgDisplay {
   position: absolute;
   top: 0vh;
   left: 0vw;
@@ -457,12 +296,12 @@ main {
           align-items: center;
 }
 
-.screenBox *.screenBlock_popUpMessage_msgBox {
+.screen .screenBlock_popUpMessage_msgBox {
   width: 480px;
   height: 300px;
   background: #004980;
   border-radius: 6px;
-  border: 1px solid #ffffff;
+  border: 1px solid #fff;
   padding: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -480,18 +319,18 @@ main {
   overflow: hidden;
 }
 
-.screenBox *.screenBlock_popUpMessage p {
+.screen .screenBlock_popUpMessage p {
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
   font-style: normal;
   font-weight: 300;
   font-size: 22px;
-  color: #ffffff;
+  color: #fff;
   text-align: justify;
 }
 
-.screenBox *.screenBlock_gameTimer_Box {
+.screen .screenBlock_gameTimer_Box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -501,7 +340,7 @@ main {
           flex-direction: row;
 }
 
-.screenBox *.screenBlock_gameTimer_SubBox {
+.screen .screenBlock_gameTimer_SubBox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -514,17 +353,17 @@ main {
           align-items: flex-end;
 }
 
-.screenBox *.screenBlock_gameTimer_SubBox * {
+.screen .screenBlock_gameTimer_SubBox * {
   font-style: normal;
-  color: #ffffff;
+  color: #fff;
 }
 
-.screenBox *.screenBlock_gameTimer_SubBox p {
+.screen .screenBlock_gameTimer_SubBox p {
   font-weight: 400;
   font-size: 16px;
 }
 
-.screenBox *.screenBlock_gameTimer_SubBox h1 {
+.screen .screenBlock_gameTimer_SubBox h1 {
   font-weight: 400;
   font-size: 64px;
 }
@@ -591,92 +430,7 @@ main {
   z-index: 2;
 }
 
-.modalBox *.modal_difficultySelection_selectionBlock {
-  overflow: visible;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  gap: 24px;
-}
-
-.modalBox *.modal_difficultySelection_selectionBlock button {
-  width: 98px;
-  height: 98px;
-  background: #ffffff;
-  border-radius: 12px;
-  border: 2px solid #ffffff;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 64px;
-  line-height: 72px;
-  text-align: center;
-  color: #0080c1;
-}
-
-.modalBox *.modal_difficultySelection_selectionBlock button:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
-}
-
-.modalBox *.modal_difficultySelection_selectionBlock button:active {
-  -webkit-transform: scale(0.95);
-          transform: scale(0.95);
-}
-
-.modalBox *.modal_difficultySelection_selectionBlock button.selectedOption {
-  border: 2px solid #7ac100;
-}
-
-.modalBox *.modal_difficultySelection_selectionBlock button.resultOption {
-  background: #7ac100;
-  color: #ffffff;
-}
-
-.modalBox *.modal_difficultySelection_selectionBlock button.errorOption {
-  background: lightcoral;
-}
-
-.modalBox *.modal_gameResult_resultImg {
-  height: 96px;
-}
-
-.modalBox *.modal_gameResult_timeBlock {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.modalBox *.modal_gameResult_timeBlock > p {
-  min-height: 32px;
-  font-style: normal;
-  font-size: 24px;
-  font-weight: 800;
-  line-height: 32px;
-}
-
-.modalBox *.modalBlock_modalTitle_txt {
+.modal .modalBlock_modalTitle_txt {
   max-width: 300px;
   min-height: 48px;
   font-style: normal;
@@ -687,7 +441,7 @@ main {
   color: #004980;
 }
 
-.modalBox *.modalBlock_gameTimer_Box {
+.modal .modalBlock_gameTimer_Box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -697,7 +451,7 @@ main {
           flex-direction: row;
 }
 
-.modalBox *.modalBlock_gameTimer_SubBox {
+.modal .modalBlock_gameTimer_SubBox {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -710,17 +464,17 @@ main {
           align-items: flex-end;
 }
 
-.modalBox *.modalBlock_gameTimer_SubBox * {
+.modal .modalBlock_gameTimer_SubBox * {
   font-style: normal;
-  color: #000000;
+  color: #000;
 }
 
-.modalBox *.modalBlock_gameTimer_SubBox p {
+.modal .modalBlock_gameTimer_SubBox p {
   font-weight: 400;
   font-size: 16px;
 }
 
-.modalBox *.modalBlock_gameTimer_SubBox h1 {
+.modal .modalBlock_gameTimer_SubBox h1 {
   font-weight: 400;
   font-size: 64px;
 }

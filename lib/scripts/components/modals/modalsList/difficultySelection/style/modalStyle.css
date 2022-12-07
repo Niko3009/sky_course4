@@ -1,0 +1,57 @@
+.modal_difficultySelection_selectionBlock {
+  overflow: visible;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  gap: 24px;
+}
+
+.modal_difficultySelection_selectionBlock button {
+  width: 98px;
+  height: 98px;
+  background: #fff;
+  border-radius: 12px;
+  border: 2px solid #fff;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 72px;
+  text-align: center;
+  color: #0080c1;
+}
+
+.modal_difficultySelection_selectionBlock button:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.modal_difficultySelection_selectionBlock button:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+}
+
+.modal_difficultySelection_selectionBlock button.selectedOption {
+  border: 2px solid #7ac100;
+}
+
+.modal_difficultySelection_selectionBlock button.resultOption {
+  background: #7ac100;
+  color: #fff;
+}
+
+.modal_difficultySelection_selectionBlock button.errorOption {
+  background: lightcoral;
+}
+/*# sourceMappingURL=modalStyle.css.map */

@@ -1,6 +1,10 @@
 // --------------------- ЭКРАН ИГРЫ ---------------------
 
+import './style/gameStyle.css'
+
 import { screenRender } from './gameScreenRender'
+import * as funcs from './gameFuncs'
+
 import { cardImages } from './gameImg'
 
 export const game = function () {
@@ -8,8 +12,9 @@ export const game = function () {
     const gameData = appObj.data.game
     const componentsObj = appObj.components
 
-    const closeTheScreen = componentsObj.screens.close
     const openTheModal = componentsObj.modals.open
+    const openTheScreen = componentsObj.screens.open
+    const closeTheScreen = componentsObj.screens.close
     const screenClosingTime = componentsObj.transitions.screenClosingTime
 
     const makeTheDelay = appObj.timeouts.start
@@ -40,11 +45,14 @@ export const game = function () {
     const blockList = screenRender(difficulty, cardsQty)
 
     const gameTimer = blockList.gameTimer
-    const cardsSetBox = blockList.cardsSetBox
     const restartBtn = blockList.restartBtn
     const exitBtn = blockList.exitBtn
 
+    const cardsSetBox = blockList.cardsSetBox
+    const cardBoxesList = Array.from(cardsSetBox.children)
+
     // ФУНКЦИОНАЛ ------------------------------------------------------------
+
     const gameStart = function () {
         const cards = cardsOnGameField
         const delayBeforeCardShowing = 1
@@ -57,7 +65,7 @@ export const game = function () {
         makeTheDelay(delayBeforeCardShowing + timeOfCardShowing, () => {
             for (const card of cards) actionWithCard.flip(card) // скрываем все карты
 
-            gameTimerID = timerStart(1, updateTime) // запускаем таймер игры
+            gameTimerID = timerStart(1, updateGameTime) // запускаем таймер игры
 
             hasTheGameStarted = true
 
@@ -65,20 +73,7 @@ export const game = function () {
         })
     }
 
-    const gameReload = function () {
-        const currentScreen = window.app.data.state.screen
-
-        if (currentScreen) window.app.components.screens.open(currentScreen)
-    }
-
-    const gameExit = function () {
-        closeTheScreen()
-        setTimeout(() => {
-            openTheModal('difficulty selection')
-        }, screenClosingTime * 1000)
-    }
-
-    const updateTime = function () {
+    const updateGameTime = function () {
         gameTimeInSec++
 
         updateDataOfGameTime(gameTimeInSec) // обновление глобальных данных
@@ -89,86 +84,18 @@ export const game = function () {
         gameTimer.updateTime.byTimeData(minutes, seconds) // обновление блока таймера (на экране)
     }
 
-    const generateCards = function (cardBoxesList: any) {
-        // Создание полной колоды (все 36 карт)
+    const gameReload = function () {
+        const currentScreen = appObj.data.state.screen
+        if (currentScreen) openTheScreen(currentScreen)
+    }
 
-        let availableCards: string[] = new Array()
-
-        const suits = ['spades', 'diamonds', 'hearts', 'clubs']
-        const ranks = [`6`, `7`, `8`, `9`, `10`, `J`, `Q`, `K`, `A`]
-        for (const suit of suits)
-            for (const rank of ranks) availableCards.push(`${rank}_${suit}`)
-
-        // Случайная выборка из полной колоды
-
-        let selectedCards: string[] = new Array()
-
-        const selectedCardsQty = Math.floor(cardBoxesList.length / 2)
-        for (let cardNum = 1; cardNum <= selectedCardsQty; cardNum++) {
-            const availableCardsQty = availableCards.length
-            const randomCardNum =
-                Math.floor(Math.random() * availableCardsQty) + 1
-
-            const selectedCardName = availableCards[randomCardNum - 1]
-            availableCards.splice(randomCardNum - 1, 1)
-
-            selectedCards[cardNum - 1] = selectedCardName
+    const gameExit = function () {
+        const makeExit = () => {
+            openTheModal('difficulty selection')
         }
 
-        // Набор генерируемых карт: удвоенная выборка из колоды
-
-        let generatedCards: string[] = selectedCards.concat(selectedCards)
-
-        // Случайное размещение карт по данному списку селекторов
-
-        let cardsOnGameField = new Array()
-
-        const placedCardsQty = generatedCards.length
-        for (let cardNum = 1; cardNum <= placedCardsQty; cardNum++) {
-            const generatedCardQty = generatedCards.length
-            const randomCardNum =
-                Math.floor(Math.random() * generatedCardQty) + 1
-
-            const selectedCardName = generatedCards[randomCardNum - 1]
-            generatedCards.splice(randomCardNum - 1, 1)
-
-            const rank = selectedCardName.slice(
-                0,
-                selectedCardName.indexOf('_')
-            )
-            const suit = selectedCardName.slice(
-                selectedCardName.indexOf('_') + 1
-            )
-            const suitImg =
-                suit === 'spades'
-                    ? '♠'
-                    : suit === 'clubs'
-                    ? '♣'
-                    : suit === 'hearts'
-                    ? '♥'
-                    : '♦'
-
-            // Данные карты
-            const selectedCardData = {
-                placeNumber: cardNum,
-                selector: cardBoxesList[cardNum - 1],
-                isCardHidden: true,
-                name: selectedCardName,
-                rank: rank,
-                suit: suit,
-                suitImg: suitImg,
-            }
-
-            cardsOnGameField[cardNum - 1] = selectedCardData
-        }
-
-        // Возврат данных
-
-        gameData.gameFieldData.closedCards = cardsOnGameField
-        gameData.cards.involved = selectedCards
-        gameData.cards.founded = []
-
-        return cardsOnGameField
+        closeTheScreen()
+        setTimeout(makeExit, screenClosingTime * 1000)
     }
 
     const actionWithCard = {
@@ -189,7 +116,7 @@ export const game = function () {
                 cardBox.classList.add(animationClass)
                 makeTheDelay(animationTime / 2, () => {
                     isCardHidden
-                        ? (cardImg.src = cardImg.src = cardImages[card.name])
+                        ? (cardImg.src = cardImages[card.name])
                         : (cardImg.src = cardImages['back'])
                 })
             })
@@ -273,6 +200,8 @@ export const game = function () {
         },
     }
 
+    const generateCards = funcs.generateCards
+
     const twoCardsComparing = function (firstCard: any, secondCard: any) {
         const areCardsSame = firstCard.name === secondCard.name
 
@@ -299,7 +228,6 @@ export const game = function () {
         gameData.status = isGameOverWithVictory ? 'gameVictory' : 'gameDefeat'
 
         timerStop(gameTimerID)
-        // appObj.data.getInfo()
 
         openTheModal('game result')
     }
@@ -312,20 +240,16 @@ export const game = function () {
     let gameTimeInSec: number = 0
     let gameTimerID: number
 
-    gameData.status = 'inGame'
-
     exitBtn.addEventListener('click', gameExit)
     restartBtn.addEventListener('click', gameReload)
 
-    const cardBoxesList = Array.from(cardsSetBox.children) // список селекторов с картами
-    const cardsOnGameField = generateCards(cardBoxesList)
-
     console.log('\n', `Число задействованных карт: ${cardsQty}`, '\n\n')
-
+    const cardsOnGameField = generateCards(cardBoxesList)  
     for (const card of cardsOnGameField)
-        card.selector.addEventListener('click', () => {
+        card.selector.onclick = function () {
             actionWithCard.open(card)
-        })
+        }
 
+    gameData.status = 'inGame'
     gameStart() // старт игры
 }

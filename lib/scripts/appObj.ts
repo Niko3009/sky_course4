@@ -9,7 +9,15 @@ import { components as componentsObj } from './components/componentsObj'
 import { timeoutStart, timeoutStop, timeoutStopAll } from './timeoutsFuncs'
 import { timerStart, timerStop, timerStopAll } from './timersFuncs'
 
-export const app = {
+export const app: {
+    launch: any
+    data: object
+    components: object
+    domainData: object
+    timers: object
+    timeouts: object
+    selectors: object
+} = {
     // ПРОЦЕДУРА ЗАПУСКА
     launch: launchFunc,
 

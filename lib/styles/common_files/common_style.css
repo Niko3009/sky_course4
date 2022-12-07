@@ -1,11 +1,8 @@
-@charset "UTF-8";
 body {
   background-color: #e6e6e6;
 }
 
 body .center {
-  padding-left: calc(50% - 1200px / 2);
-  padding-right: calc(50% - 1200px / 2);
   padding-left: MAX(calc(50% - 1200px / 2), 16px);
   padding-right: MAX(calc(50% - 1200px / 2), 16px);
   overflow-x: auto;
@@ -25,8 +22,6 @@ body .center {
 * * {
   scrollbar-width: thin;
   scrollbar-color: grey transparent;
-  /* ширина scrollbar */
-  /* цвет дорожки */
 }
 
 * *::-webkit-scrollbar {
@@ -40,11 +35,8 @@ body .center {
 
 * *::-webkit-scrollbar-thumb {
   background-color: grey;
-  /* цвет плашки */
   border-radius: 5px;
-  /* закругления плашки */
   border: 1px solid transparent;
-  /* padding вокруг плашки */
 }
 
 button {
@@ -63,7 +55,7 @@ button {
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
-  color: #ffffff;
+  color: #fff;
   cursor: pointer;
 }
 
@@ -74,11 +66,11 @@ button:active {
 
 button:hover {
   background: #0f0f0f;
-  color: #ffffff;
+  color: #fff;
 }
 
 button:disabled {
-  background: #ffffff;
+  background: #fff;
   color: gray;
   border: 2px solid gray;
   -webkit-transform: none;
@@ -94,7 +86,7 @@ input {
   height: 40px;
   border-radius: 20px;
   border: 2px solid #0f0f0f;
-  background: #ffffff;
+  background: #fff;
   outline: none;
   font-style: normal;
   font-weight: 400;
